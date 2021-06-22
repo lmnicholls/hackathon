@@ -1,17 +1,18 @@
 import axios from "axios";
 
-const ROOT_URL = "https://api.openweathermap.org/data/2.5/forecast?";
+const ROOT_URL = "https://api.openweathermap.org/data/2.5/onecall?";
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
-export const FETCH_WEATHER = "FETCH_WEATHER";
+export const GET_LOCATION = "GET_LOCATION";
 
-export function fetchWeather(city) {
+export function getLocation(latitude, longitude) {
   const request = axios.get(
-    `${ROOT_URL}q=${city}&units=imperial&appid=${API_KEY}`
+    `${ROOT_URL}lat=${latitude}&lon=${longitude}&units=imperial&appid=${API_KEY}`
   );
+  console.log(request);
 
   return {
-    type: FETCH_WEATHER,
+    type: GET_LOCATION,
     payload: request,
   };
 }
