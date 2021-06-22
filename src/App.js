@@ -2,6 +2,11 @@ import "./App.css";
 import React from "react";
 import { getLocation } from "./actions";
 import { useDispatch } from "react-redux";
+//style
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+//components
+import Form from "./components/Form";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,14 +27,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello World</h1>
       <button
-        className="btn btn-primary col-auto"
+        className="btn btn-primary col-auto location"
         type="submit"
         onClick={(e) => findByGeolocation(e)}
       >
         Find Me
       </button>
+      <Form />
     </div>
   );
 }
