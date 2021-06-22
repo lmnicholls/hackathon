@@ -8,7 +8,6 @@ const Form = () => {
   const [cloudy, setCloudy] = useState("");
   const [snow, setSnow] = useState("");
 
-  //weather condition local state?
   //event handlers
 
   return (
@@ -18,7 +17,7 @@ const Form = () => {
           <h1 className="header">When to run?</h1>
           <form>
             <div className="form-group">
-              <label for="temperature" className="label">
+              <label className="label">
                 <strong>Temperature:</strong>
               </label>
               <input
@@ -32,7 +31,7 @@ const Form = () => {
             </div>
 
             <div className="form-group">
-              <label for="humidity" className="label">
+              <label className="label">
                 <strong>Humidity:</strong>
               </label>
               <input
