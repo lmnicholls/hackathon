@@ -1,14 +1,26 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Form = () => {
   const [temp, setTemp] = useState("");
-  const [humidity, setHumidity] = useState("");
+  const [humidityLevel, setHumidityLevel] = useState("");
   const [sunny, setSunny] = useState("");
   const [rain, setRain] = useState("");
   const [cloudy, setCloudy] = useState("");
   const [snow, setSnow] = useState("");
 
+  const { temperature, humidity, conditions } = useSelector(
+    (state) => state.currentWeather.dailyWeather[0]
+  );
+
   //event handlers
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    //tried parseInt local state and did not match so converting store values to string to meet conditional and compare input values with redux store values
+    const humidityString = humidity.toString();
+    const tempString = temperature.toString();
+  };
 
   return (
     <div className="container-fluid">
@@ -38,9 +50,9 @@ const Form = () => {
                 type="text"
                 className="form-control"
                 placeholder="humidity"
-                value={humidity}
+                value={humidityLevel}
                 required
-                onChange={(e) => setHumidity(e.target.value)}
+                onChange={(e) => setHumidityLevel(e.target.value)}
               ></input>
             </div>
 
@@ -86,7 +98,12 @@ const Form = () => {
               </div>
             </div>
 
-            <button className="btn btn-primary col-auto">Submit</button>
+            <button
+              className="btn btn-primary col-auto"
+              onClick={handleFormSubmit}
+            >
+              Submit
+            </button>
           </form>
         </div>
       </div>
