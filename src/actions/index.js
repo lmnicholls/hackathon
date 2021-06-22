@@ -9,7 +9,6 @@ export function getLocation(latitude, longitude) {
   const request = axios.get(
     `${ROOT_URL}lat=${latitude}&lon=${longitude}&units=imperial&appid=${API_KEY}`
   );
-  console.log(request);
 
   return {
     type: GET_LOCATION,
