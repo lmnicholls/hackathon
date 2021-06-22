@@ -85,6 +85,8 @@ const Form = () => {
                 </label>
               </div>
             </div>
+
+            <button className="btn btn-primary col-auto">Submit</button>
           </form>
         </div>
       </div>
