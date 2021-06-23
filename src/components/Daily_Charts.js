@@ -18,14 +18,12 @@ const DailyCharts = () => {
     const dailyDataPoints = [...hourlyWeather][0].date.filter(
       (v) => v === [...hourlyWeather][0].date[0]
     ).length;
-    console.log("1", hourlyWeather);
+
     const time = [...hourlyWeather[0].time].splice(0, dailyDataPoints);
     const conditions = [...hourlyWeather[0].conditions].splice(
       0,
       dailyDataPoints
     );
-
-    console.log("2", hourlyWeather);
 
     const tempData = {
       labels: [...hourlyWeather][0].time.slice(0, dailyDataPoints),

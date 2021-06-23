@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getRun, getNotRun } from "../actions";
+import { getRun, getNotRun, getLocation } from "../actions";
 import { Link } from "react-router-dom";
 
 const Form = () => {
   const [temp, setTemp] = useState("");
   const [humidityLevel, setHumidityLevel] = useState("");
-  const [sunny, setSunny] = useState(false);
-  const [rain, setRain] = useState(false);
-  const [cloudy, setCloudy] = useState(false);
-  const [snow, setSnow] = useState(false);
-  const [weatherConditions, setWeatherConditions] = useState([]);
+  // const [sunny, setSunny] = useState(false);
+  // const [rain, setRain] = useState(false);
+  // const [cloudy, setCloudy] = useState(false);
+  // const [snow, setSnow] = useState(false);
+  // const [weatherConditions, setWeatherConditions] = useState([]);
 
   const { temperature, humidity, conditions } = useSelector(
     (state) => state.currentWeather.dailyWeather[0]
@@ -23,6 +23,8 @@ const Form = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    console.log(temp);
+    console.log(humidityLevel);
     const tempNum = parseInt(temp);
     const humidityNum = parseInt(humidityLevel);
 
@@ -66,7 +68,7 @@ const Form = () => {
               ></input>
             </div>
 
-            <div className="form-group weather-conditions">
+            {/* <div className="form-group weather-conditions">
               <label className="label">
                 <strong>Weather Conditions:</strong>
               </label>
@@ -109,17 +111,21 @@ const Form = () => {
                   Snow
                 </label>
               </div>
-            </div>
+            </div> */}
 
-            <Link to="/run">
-              <button
-                className="btn btn-primary col-auto"
-                type="submit"
-                onClick={handleFormSubmit}
+            <button
+              className="btn btn-primary col-auto location"
+              type="submit"
+              onClick={(e) => handleFormSubmit(e)}
+            >
+              <Link
+                to="/run"
+                className="submit-link"
+                style={{ textDecoration: "none" }}
               >
                 Submit
-              </button>
-            </Link>
+              </Link>
+            </button>
           </form>
         </div>
       </div>
