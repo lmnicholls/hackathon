@@ -15,12 +15,25 @@ const DailyCharts = () => {
       </div>
     );
   } else {
-    const data = {
+    const tempData = {
       labels: hourlyWeather[0].time,
       datasets: [
         {
           label: "Hourly Temperature (°F)",
           data: hourlyWeather[0].temperature,
+          fill: false,
+          backgroundColor: "rgb(255, 99, 132)",
+          borderColor: "rgba(255, 99, 132, 0.2)",
+        },
+      ],
+    };
+
+    const humidityData = {
+      labels: hourlyWeather[0].time,
+      datasets: [
+        {
+          label: "Hourly Humidity (%)",
+          data: hourlyWeather[0].humidity,
           fill: false,
           backgroundColor: "rgb(255, 99, 132)",
           borderColor: "rgba(255, 99, 132, 0.2)",
@@ -43,7 +56,11 @@ const DailyCharts = () => {
     return (
       <div className="line_graph">
         <Line
-          data={data}
+          data={tempData}
+          options={{ options, responsive: true, maintainAspectRatio: true }}
+        />
+        <Line
+          data={humidityData}
           options={{ options, responsive: true, maintainAspectRatio: true }}
         />
       </div>
