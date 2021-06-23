@@ -9,17 +9,18 @@ const Form = () => {
   const [cloudy, setCloudy] = useState("");
   const [snow, setSnow] = useState("");
 
+  /*
   const { temperature, humidity, conditions } = useSelector(
     (state) => state.currentWeather.dailyWeather[0]
-  );
+  );*/
 
   //event handlers
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     //tried parseInt local state and did not match so converting store values to string to meet conditional and compare input values with redux store values
-    const humidityString = humidity.toString();
-    const tempString = temperature.toString();
+    //const humidityString = humidity.toString();
+    //const tempString = temperature.toString();
   };
 
   return (
@@ -35,7 +36,7 @@ const Form = () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Temperature"
+                placeholder="Enter max run temp"
                 required
                 value={temp}
                 onChange={(e) => setTemp(e.target.value)}
@@ -47,11 +48,10 @@ const Form = () => {
                 <strong>Humidity:</strong>
               </label>
               <input
-                type="text"
-                className="form-control"
-                placeholder="humidity"
+                type="range"
+                min="0"
+                max="100"
                 value={humidityLevel}
-                required
                 onChange={(e) => setHumidityLevel(e.target.value)}
               ></input>
             </div>
@@ -69,6 +69,7 @@ const Form = () => {
                   Sunny
                 </label>
               </div>
+
               <div className="checkbox">
                 <label>
                   <input
