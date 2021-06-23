@@ -1,13 +1,14 @@
 import "./App.css";
 import React from "react";
 import { getLocation } from "./actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //style
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 //components
 import Form from "./components/Form";
 import DailyCharts from "./components/Daily_Charts";
+import Run from "./components/Run";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,8 @@ function App() {
     }
   };
 
+  const { idealTime } = useSelector((state) => state.run);
+
   return (
     <div className="App">
       <button
@@ -36,6 +39,7 @@ function App() {
         Find Me
       </button>
       <Form />
+      {idealTime ? <Run /> : ""}
       <DailyCharts />
     </div>
   );
