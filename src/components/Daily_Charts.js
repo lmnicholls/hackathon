@@ -15,37 +15,35 @@ const DailyCharts = () => {
       </div>
     );
   } else {
-    const dailyDataPoints = hourlyWeather[0].date.filter(
-      (v) => v === hourlyWeather[0].date[0]
+    const dailyDataPoints = [...hourlyWeather][0].date.filter(
+      (v) => v === [...hourlyWeather][0].date[0]
     ).length;
+    console.log("1", hourlyWeather);
+    const time = [...hourlyWeather[0].time].splice(0, dailyDataPoints);
+    const conditions = [...hourlyWeather[0].conditions].splice(
+      0,
+      dailyDataPoints
+    );
 
-    const time = hourlyWeather[0].time.splice(0, dailyDataPoints);
-    const conditions = hourlyWeather[0].conditions.splice(0, dailyDataPoints);
-
-    // const conditions = hourlyWeather[0].conditions
-    //   .slice(0, dailyDataPoints)
-    //   .reduce((obj, condition) => {
-    //     obj[condition] = (obj[condition] || 0) + 1;
-    //     return obj;
-    //   }, {});
+    console.log("2", hourlyWeather);
 
     const tempData = {
-      labels: hourlyWeather[0].time.slice(0, dailyDataPoints),
+      labels: [...hourlyWeather][0].time.slice(0, dailyDataPoints),
       datasets: [
         {
           label: "Today's Temperature (°F)",
-          data: hourlyWeather[0].temperature.slice(0, dailyDataPoints),
+          data: [...hourlyWeather][0].temperature.slice(0, dailyDataPoints),
           fill: false,
-          backgroundColor: "rgb(255, 99, 132)",
-          borderColor: "rgba(255, 99, 132, 0.2)",
+          backgroundColor: "rgb(92, 145, 173)",
+          borderColor: "rgba(92, 145, 173, 0.2)",
         },
         {
           label: "Max Temperature(%)",
           // hardcoded user data - need to fix!!
           data: [76, 76, 76, 76, 76, 76, 76, 76, 76],
           fill: true,
-          backgroundColor: "rgba(25, 90, 132, 0.25)",
-          borderColor: "rgba(255, 99, 132, 0.2)",
+          backgroundColor: "rgba(86, 156, 93, 0.25)",
+          borderColor: "rgba(86, 156, 93, 0.2)",
         },
       ],
     };
@@ -63,22 +61,22 @@ const DailyCharts = () => {
     };
 
     const humidityData = {
-      labels: hourlyWeather[0].time.slice(0, dailyDataPoints),
+      labels: [...hourlyWeather][0].time.slice(0, dailyDataPoints),
       datasets: [
         {
           label: "Today's Humidity (%)",
-          data: hourlyWeather[0].humidity.slice(0, dailyDataPoints),
+          data: [...hourlyWeather][0].humidity.slice(0, dailyDataPoints),
           fill: false,
-          backgroundColor: "rgb(255, 99, 132)",
-          borderColor: "rgba(255, 99, 132, 0.2)",
+          backgroundColor: "rgb(92, 145, 173)",
+          borderColor: "rgba(92, 145, 173, 0.2)",
         },
         {
           label: "Max Humidity (%)",
           // hardcoded user data - need to fix!!
           data: [76, 76, 76, 76, 76, 76, 76, 76, 76],
           fill: true,
-          backgroundColor: "rgba(25, 90, 132, 0.25)",
-          borderColor: "rgba(255, 99, 132, 0.2)",
+          backgroundColor: "rgba(86, 156, 93, 0.25)",
+          borderColor: "rgba(86, 156, 93, 0.2)",
         },
       ],
     };
