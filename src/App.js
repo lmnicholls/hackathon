@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import { getLocation } from "./actions";
 import { useDispatch, useSelector } from "react-redux";
+import { Switch, Route, Redirect } from "react-router-dom";
 //style
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -41,11 +42,23 @@ function App() {
       >
         Find Me
       </button>
-      {dataLoaded && <Form />}
-      {idealTime ? <Run /> : ""}
-      {notIdealTime ? <NotRun /> : ""}
-      <CurrentWeather />
-      <DailyCharts />
+      <Switch>
+        <Route exact path="/">
+          {dataLoaded && <Form />}
+        </Route>
+
+        <Route path="/run">
+          {idealTime ? <Run /> : ""}
+          <CurrentWeather />
+          <DailyCharts />
+        </Route>
+
+        <Route path="/not-run">
+          {notIdealTime ? <NotRun /> : ""}
+          <CurrentWeather />
+          <DailyCharts />
+        </Route>
+      </Switch>
     </div>
   );
 }

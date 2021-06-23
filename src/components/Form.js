@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRun, getNotRun } from "../actions";
+import { Link } from "react-router-dom";
 
 const Form = () => {
   const [temp, setTemp] = useState("");
@@ -18,6 +19,7 @@ const Form = () => {
   const dispatch = useDispatch();
 
   //event handlers
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -109,12 +111,15 @@ const Form = () => {
               </div>
             </div>
 
-            <button
-              className="btn btn-primary col-auto"
-              onClick={handleFormSubmit}
-            >
-              Submit
-            </button>
+            <Link to="/run">
+              <button
+                className="btn btn-primary col-auto"
+                type="submit"
+                onClick={handleFormSubmit}
+              >
+                Submit
+              </button>
+            </Link>
           </form>
         </div>
       </div>
