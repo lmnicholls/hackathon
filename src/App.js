@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 //components
 import Form from "./components/Form";
+import DailyCharts from "./components/Daily_Charts";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
         Find Me
       </button>
       <Form />
+      <DailyCharts />
     </div>
   );
 }
