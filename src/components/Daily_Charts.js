@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Line } from "react-chartjs-2";
 
@@ -6,7 +6,6 @@ const DailyCharts = () => {
   const hourlyWeather = useSelector(
     (state) => state.hourlyWeather.hourlyWeather
   );
-  console.log(hourlyWeather.length);
 
   if (hourlyWeather.length === 0) {
     return (
@@ -15,12 +14,16 @@ const DailyCharts = () => {
       </div>
     );
   } else {
+    const dailyDataPoints = hourlyWeather[0].date.filter(
+      (v) => v === hourlyWeather[0].date[0]
+    ).length;
+
     const tempData = {
-      labels: hourlyWeather[0].time,
+      labels: hourlyWeather[0].time.slice(0, dailyDataPoints),
       datasets: [
         {
-          label: "Hourly Temperature (°F)",
-          data: hourlyWeather[0].temperature,
+          label: "Today's Temperature (°F)",
+          data: hourlyWeather[0].temperature.slice(0, dailyDataPoints),
           fill: false,
           backgroundColor: "rgb(255, 99, 132)",
           borderColor: "rgba(255, 99, 132, 0.2)",
@@ -29,11 +32,11 @@ const DailyCharts = () => {
     };
 
     const humidityData = {
-      labels: hourlyWeather[0].time,
+      labels: hourlyWeather[0].time.slice(0, dailyDataPoints),
       datasets: [
         {
-          label: "Hourly Humidity (%)",
-          data: hourlyWeather[0].humidity,
+          label: "Today's Humidity (%)",
+          data: hourlyWeather[0].humidity.slice(0, dailyDataPoints),
           fill: false,
           backgroundColor: "rgb(255, 99, 132)",
           borderColor: "rgba(255, 99, 132, 0.2)",
