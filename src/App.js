@@ -8,6 +8,7 @@ import "./App.css";
 //components
 import Form from "./components/Form";
 import DailyCharts from "./components/Daily_Charts";
+import CurrentWeather from "./components/Current_Weather";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
         Find Me
       </button>
       <Form />
+      <CurrentWeather />
       <DailyCharts />
     </div>
   );
