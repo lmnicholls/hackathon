@@ -34,7 +34,7 @@ const Form = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-6 offset-3">
-          <h1 className="header">When to run?</h1>
+          <h1 className="header">Weather Preferences</h1>
           <form>
             <div className="form-group">
               <label className="label">
@@ -43,7 +43,7 @@ const Form = () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter max run temp"
+                placeholder="Enter max run temp F"
                 required
                 value={temp}
                 onChange={(e) => setTemp(e.target.value)}
@@ -55,10 +55,10 @@ const Form = () => {
                 <strong>Humidity:</strong>
               </label>
               <input
-                type="range"
-                min="0"
-                max="100"
+                type="text"
+                className="form-control"
                 value={humidityLevel}
+                placeholder="max % humidity"
                 onChange={(e) => setHumidityLevel(e.target.value)}
               ></input>
             </div>
@@ -71,7 +71,7 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setSunny(!sunny)}
+                    onChange={(e) => setSunny("sunny")}
                   ></input>
                   Sunny
                 </label>
@@ -81,7 +81,7 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setRain(!rain)}
+                    onChange={(e) => setRain("rain")}
                   ></input>
                   Rain
                 </label>
@@ -90,7 +90,7 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setCloudy(!cloudy)}
+                    onChange={(e) => setCloudy("clouds")}
                   ></input>
                   Cloudy
                 </label>
@@ -99,7 +99,7 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setSnow(!snow)}
+                    onChange={(e) => setSnow("snow")}
                   ></input>
                   Snow
                 </label>

@@ -29,6 +29,7 @@ function App() {
   };
 
   const { idealTime } = useSelector((state) => state.run);
+  const { dataLoaded } = useSelector((state) => state.currentWeather);
 
   return (
     <div className="App">
@@ -39,7 +40,7 @@ function App() {
       >
         Find Me
       </button>
-      <Form />
+      {dataLoaded && <Form />}
       {idealTime ? <Run /> : ""}
       <CurrentWeather />
       <DailyCharts />
