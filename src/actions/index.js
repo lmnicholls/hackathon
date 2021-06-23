@@ -4,6 +4,7 @@ const ROOT_URL = "https://api.openweathermap.org/data/2.5/onecall?";
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 export const GET_LOCATION = "GET_LOCATION";
+export const STORE_USER_DATA = "STORE_USER_DATA";
 
 export function getLocation(latitude, longitude) {
   const request = axios.get(
@@ -13,6 +14,13 @@ export function getLocation(latitude, longitude) {
   return {
     type: GET_LOCATION,
     payload: request,
+  };
+}
+
+export function storeUserData(temp, humidity) {
+  return {
+    type: STORE_USER_DATA,
+    payload: { temp, humidity },
   };
 }
 

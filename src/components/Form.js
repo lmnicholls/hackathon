@@ -1,34 +1,45 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getRun, getNotRun } from "../actions";
+import { getRun, getNotRun, getLocation } from "../actions";
 
 const Form = () => {
   const [temp, setTemp] = useState("");
   const [humidityLevel, setHumidityLevel] = useState("");
-  const [sunny, setSunny] = useState(false);
-  const [rain, setRain] = useState(false);
-  const [cloudy, setCloudy] = useState(false);
-  const [snow, setSnow] = useState(false);
-  const [weatherConditions, setWeatherConditions] = useState([]);
+  // const [sunny, setSunny] = useState(false);
+  // const [rain, setRain] = useState(false);
+  // const [cloudy, setCloudy] = useState(false);
+  // const [snow, setSnow] = useState(false);
+  // const [weatherConditions, setWeatherConditions] = useState([]);
 
-  const { temperature, humidity, conditions } = useSelector(
-    (state) => state.currentWeather.dailyWeather[0]
-  );
+  // const { temperature, humidity, conditions } = useSelector(
+  //   (state) => state.currentWeather.dailyWeather[0]
+  // );
 
   const dispatch = useDispatch();
 
   //event handlers
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    console.log(temp);
+    console.log(humidityLevel);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const { latitude } = position.coords;
+        const { longitude } = position.coords;
 
-    const tempNum = parseInt(temp);
-    const humidityNum = parseInt(humidityLevel);
-
-    if (tempNum <= temperature && humidityNum <= humidity) {
-      dispatch(getRun());
+        dispatch(getLocation(latitude, longitude));
+      });
     } else {
-      dispatch(getNotRun());
+      alert("Sorry, your location was not found.");
     }
+    // const tempNum = parseInt(temp);
+    // const humidityNum = parseInt(humidityLevel);
+
+    // if (tempNum <= temperature && humidityNum <= humidity) {
+    //   dispatch(getRun());
+    // } else {
+    //   dispatch(getNotRun());
+    // }
   };
 
   return (
@@ -64,7 +75,7 @@ const Form = () => {
               ></input>
             </div>
 
-            <div className="form-group weather-conditions">
+            {/* <div className="form-group weather-conditions">
               <label className="label">
                 <strong>Weather Conditions:</strong>
               </label>
@@ -107,11 +118,12 @@ const Form = () => {
                   Snow
                 </label>
               </div>
-            </div>
+            </div> */}
 
             <button
-              className="btn btn-primary col-auto"
-              onClick={handleFormSubmit}
+              className="btn btn-primary col-auto location"
+              type="submit"
+              onClick={(e) => handleFormSubmit(e)}
             >
               Submit
             </button>

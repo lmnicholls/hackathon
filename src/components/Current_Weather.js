@@ -5,7 +5,7 @@ const CurrentWeather = () => {
   const currentWeather = useSelector(
     (state) => state.currentWeather.dailyWeather
   );
-  console.log(currentWeather);
+
   const dataLoaded = useSelector((state) => state.hourlyWeather.dataLoaded);
 
   if (dataLoaded === true) {
