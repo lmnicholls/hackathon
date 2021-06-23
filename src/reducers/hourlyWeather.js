@@ -4,6 +4,7 @@ import moment from "moment";
 
 const DEFAULT_STATE = {
   hourlyWeather: [],
+  dataLoaded: false,
 };
 
 const HourlyWeatherReducer = function (state = DEFAULT_STATE, action) {
@@ -34,6 +35,7 @@ const HourlyWeatherReducer = function (state = DEFAULT_STATE, action) {
             }),
           },
         ],
+        dataLoaded: true,
       };
     default:
       return state;

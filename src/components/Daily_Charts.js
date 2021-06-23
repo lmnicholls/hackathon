@@ -6,11 +6,12 @@ const DailyCharts = () => {
   const hourlyWeather = useSelector(
     (state) => state.hourlyWeather.hourlyWeather
   );
+  const dataLoaded = useSelector((state) => state.hourlyWeather.dataLoaded);
 
-  if (hourlyWeather.length === 0) {
+  if (dataLoaded === false) {
     return (
       <div>
-        <h1>Hello World</h1>
+        <h1>Let's See If You Should Run Today?</h1>
       </div>
     );
   } else {
