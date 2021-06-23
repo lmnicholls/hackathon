@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { parse } from "uuid";
 import { getRun } from "../actions";
 
 const Form = () => {
   const [temp, setTemp] = useState("");
   const [humidityLevel, setHumidityLevel] = useState("");
-  const [sunny, setSunny] = useState("");
-  const [rain, setRain] = useState("");
-  const [cloudy, setCloudy] = useState("");
-  const [snow, setSnow] = useState("");
+  const [sunny, setSunny] = useState(false);
+  const [rain, setRain] = useState(false);
+  const [cloudy, setCloudy] = useState(false);
+  const [snow, setSnow] = useState(false);
+  const [weatherConditions, setWeatherConditions] = useState([]);
 
   const { temperature, humidity, conditions } = useSelector(
     (state) => state.currentWeather.dailyWeather[0]
@@ -20,12 +22,10 @@ const Form = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    //tried parseInt local state and did not match so converting store values to string to meet conditional and compare input values with redux store values
+    const tempNum = parseInt(temp);
+    const humidityNum = parseInt(humidityLevel);
 
-    const humidityString = humidity.toString();
-    const tempString = temperature.toString();
-
-    if (temp <= tempString && humidityLevel <= humidityString) {
+    if (tempNum <= temperature && humidityNum <= humidity) {
       dispatch(getRun());
     }
   };
@@ -71,7 +71,9 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setSunny("sunny")}
+                    onChange={(e) => {
+                      setSunny(!sunny);
+                    }}
                   ></input>
                   Sunny
                 </label>
@@ -81,7 +83,7 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setRain("rain")}
+                    onChange={(e) => setRain(!rain)}
                   ></input>
                   Rain
                 </label>
@@ -90,7 +92,7 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setCloudy("clouds")}
+                    onChange={(e) => setCloudy(!cloudy)}
                   ></input>
                   Cloudy
                 </label>
@@ -99,7 +101,7 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setSnow("snow")}
+                    onChange={(e) => setSnow(!snow)}
                   ></input>
                   Snow
                 </label>
