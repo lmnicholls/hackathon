@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getRun, getNotRun, getLocation } from "../actions";
+import { getRun, getNotRun, getLocation, storeUserData } from "../actions";
 
 const Form = () => {
   const [temp, setTemp] = useState("");
@@ -20,8 +20,7 @@ const Form = () => {
   //event handlers
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(temp);
-    console.log(humidityLevel);
+    dispatch(storeUserData(temp, humidityLevel));
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         const { latitude } = position.coords;

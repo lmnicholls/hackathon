@@ -11,8 +11,8 @@ const StoreUserData = function (state = DEFAULT_STATE, action) {
   switch (action.type) {
     case STORE_USER_DATA:
       return {
-        temp: action.data.temp,
-        humidity: action.data.humidity,
+        temp: action.payload.temp,
+        humidity: action.payload.humidity,
       };
     default:
       return state;
