@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Line } from "react-chartjs-2";
+import { Line, Pie } from "react-chartjs-2";
 
 const DailyCharts = () => {
   const hourlyWeather = useSelector(
@@ -18,6 +18,15 @@ const DailyCharts = () => {
     const dailyDataPoints = hourlyWeather[0].date.filter(
       (v) => v === hourlyWeather[0].date[0]
     ).length;
+
+    const conditions = hourlyWeather[0].conditions
+      .slice(0, dailyDataPoints)
+      .reduce((obj, condition) => {
+        obj[condition] = (obj[condition] || 0) + 1;
+        return obj;
+      }, {});
+    console.log(Object.keys(conditions));
+    console.log(Object.values(conditions));
 
     const tempData = {
       labels: hourlyWeather[0].time.slice(0, dailyDataPoints),
@@ -49,19 +58,6 @@ const DailyCharts = () => {
             },
           },
         ],
-      },
-      plugins: {
-        autocolors: false,
-        annotation: {
-          annotations: {
-            box1: {
-              type: "box",
-              yMin: 70,
-              yMax: 76,
-              backgroundColor: "rgba(255, 99, 132, 0.25)",
-            },
-          },
-        },
       },
     };
 
@@ -98,20 +94,51 @@ const DailyCharts = () => {
       },
     };
 
+    const conditionsData = {
+      labels: Object.keys(conditions),
+      datasets: [
+        {
+          label: "Today's Conditions",
+          data: Object.values(conditions),
+          fill: false,
+          backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
+          borderColor: ["rgb(255, 99, 32)", "rgb(54, 162, 35)"],
+          borderWidth: 1,
+        },
+      ],
+    };
+
     return (
-      <div className="line_graph">
-        <Line
-          data={tempData}
-          options={{ tempOptions, responsive: true, maintainAspectRatio: true }}
-        />
-        <Line
-          data={humidityData}
-          options={{
-            humidityOptions,
-            responsive: true,
-            maintainAspectRatio: true,
-          }}
-        />
+      <div className="dailyConditions">
+        <h1>The Day's Conditions</h1>
+        <div className="graphs">
+          <div className="temperatureGraph">
+            <h5>Temperature</h5>
+            <Line
+              data={tempData}
+              options={{
+                tempOptions,
+                responsive: true,
+                maintainAspectRatio: true,
+              }}
+            />
+          </div>
+          <div className="humidityGraph">
+            <h5>Humidity</h5>
+            <Line
+              data={humidityData}
+              options={{
+                humidityOptions,
+                responsive: true,
+                maintainAspectRatio: true,
+              }}
+            />
+          </div>
+          <div className="conditionGraph">
+            <h5>Conditions</h5>
+            <Pie data={conditionsData} />
+          </div>
+        </div>
       </div>
     );
   }

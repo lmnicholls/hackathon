@@ -9,6 +9,7 @@ import "./App.css";
 import Form from "./components/Form";
 import DailyCharts from "./components/Daily_Charts";
 import Run from "./components/Run";
+import CurrentWeather from "./components/Current_Weather";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function App() {
       </button>
       <Form />
       {idealTime ? <Run /> : ""}
+      <CurrentWeather />
       <DailyCharts />
     </div>
   );

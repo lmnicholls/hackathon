@@ -7,6 +7,18 @@
   text-align: center;
 }
 
-.line_graph {
-  width: 500px;
+.graphs {
+  display: flex;
+}
+
+.temperatureGraph {
+  width: 33%;
+}
+
+.humidityGraph {
+  width: 33%;
+}
+
+.conditionGraph {
+  width: 300px;
 }
