@@ -109,7 +109,7 @@ const DailyCharts = () => {
     };
 
     return (
-      <div className="dailyConditions">
+      <div className="dailyConditions text-center">
         <h1>The Day's Conditions</h1>
         <div className="graphs">
           <div className="temperatureGraph">
