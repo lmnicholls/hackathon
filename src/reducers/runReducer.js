@@ -7,7 +7,9 @@ const DEFAULT_STATE = {
 const runReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case GET_RUN:
-      return true;
+      return {
+        idealTime: true,
+      };
     default:
       return state;
   }
