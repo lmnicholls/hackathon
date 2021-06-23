@@ -23,3 +23,11 @@ export const getRun = () => {
     type: GET_RUN,
   };
 };
+
+export const GET_NOT_RUN = "GET_NOT_RUN";
+
+export const getNotRun = () => {
+  return {
+    type: GET_NOT_RUN,
+  };
+};

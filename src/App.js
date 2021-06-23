@@ -29,7 +29,7 @@ function App() {
     }
   };
 
-  const { idealTime } = useSelector((state) => state.run);
+  const { idealTime, notIdealTime } = useSelector((state) => state.run);
   const { dataLoaded } = useSelector((state) => state.currentWeather);
 
   return (
@@ -43,6 +43,7 @@ function App() {
       </button>
       {dataLoaded && <Form />}
       {idealTime ? <Run /> : ""}
+      {notIdealTime ? <NotRun /> : ""}
       <CurrentWeather />
       <DailyCharts />
     </div>

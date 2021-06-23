@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { parse } from "uuid";
-import { getRun } from "../actions";
+import { getRun, getNotRun } from "../actions";
 
 const Form = () => {
   const [temp, setTemp] = useState("");
@@ -27,6 +26,8 @@ const Form = () => {
 
     if (tempNum <= temperature && humidityNum <= humidity) {
       dispatch(getRun());
+    } else {
+      dispatch(getNotRun());
     }
   };
 
