@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+<<<<<<< HEAD
 import { getRun, getNotRun, getLocation } from "../actions";
 import { Link } from "react-router-dom";
+=======
+import { getRun, getNotRun, getLocation, storeUserData } from "../actions";
+>>>>>>> c0ac988a5dea7284fc1b6cbfd0d01d8f89b89184
 
 const Form = () => {
   const [temp, setTemp] = useState("");
@@ -22,11 +26,19 @@ const Form = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
 
     console.log(temp);
     console.log(humidityLevel);
     const tempNum = parseInt(temp);
     const humidityNum = parseInt(humidityLevel);
+=======
+    dispatch(storeUserData(temp, humidityLevel));
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const { latitude } = position.coords;
+        const { longitude } = position.coords;
+>>>>>>> c0ac988a5dea7284fc1b6cbfd0d01d8f89b89184
 
     if (tempNum <= temperature && humidityNum <= humidity) {
       dispatch(getRun());

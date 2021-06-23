@@ -5,6 +5,7 @@ const CurrentWeather = () => {
   const currentWeather = useSelector(
     (state) => state.currentWeather.dailyWeather
   );
+  const userData = useSelector((state) => state.userData);
 
   const dataLoaded = useSelector((state) => state.hourlyWeather.dataLoaded);
 
@@ -13,7 +14,7 @@ const CurrentWeather = () => {
       <div className="currentWeather text-center">
         <h1>Current Weather Conditions</h1>
         <h6>
-          {currentWeather[0].date} at {currentWeather[0].time}{" "}
+          {currentWeather[0].date} at {currentWeather[0].time}
         </h6>
         <div class="table-div">
           <table className="table table-striped table-responsive table-secondary">
@@ -21,12 +22,24 @@ const CurrentWeather = () => {
               <tr>
                 <td>Temperature</td>
                 <td> {currentWeather[0].temperature} °F</td>
-                <td>Condition met/not met</td>
+                <td>
+                  {currentWeather[0].temperature > userData.temp ? (
+                    <div>Not Met</div>
+                  ) : (
+                    <div>Met</div>
+                  )}
+                </td>
               </tr>
               <tr>
                 <td>Humidity</td>
                 <td> {currentWeather[0].humidity} %</td>
-                <td>Condition met/not met</td>
+                <td>
+                  {currentWeather[0].humidity > userData.humidity ? (
+                    <div>Not Met</div>
+                  ) : (
+                    <div>Met</div>
+                  )}
+                </td>
               </tr>
               <tr>
                 <td>Condition</td>
