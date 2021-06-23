@@ -1,4 +1,4 @@
-import { GET_RUN, GET_NOT_RUN } from "../actions";
+import { GET_RUN, GET_NOT_RUN, SET_DEFAULT_RUN } from "../actions";
 
 const DEFAULT_STATE = {
   idealTime: false,
@@ -16,6 +16,11 @@ const runReducer = (state = DEFAULT_STATE, action) => {
       return {
         ...state,
         notIdealTime: true,
+      };
+    case SET_DEFAULT_RUN:
+      return {
+        idealTime: false,
+        notIdealTime: false,
       };
     default:
       return state;

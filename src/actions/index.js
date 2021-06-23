@@ -39,3 +39,11 @@ export const getNotRun = () => {
     type: GET_NOT_RUN,
   };
 };
+
+export const SET_DEFAULT_RUN = "SET_DEFAULT_RUN";
+
+export const setDefaultRun = () => {
+  return {
+    type: SET_DEFAULT_RUN,
+  };
+};

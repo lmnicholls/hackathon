@@ -28,3 +28,12 @@
 .submit-link:hover {
   color: white;
 }
+
+.back-link {
+  text-decoration: none;
+  color: white;
+}
+
+.back-link:hover {
+  color: white;
+}

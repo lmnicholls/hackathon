@@ -39,8 +39,7 @@ function App() {
           {dataLoaded ? <Form /> : ""}
         </Route>
         <Route path="/run">
-          {idealTime ? <Run /> : ""}
-          {notIdealTime ? <NotRun /> : ""}
+          <Run />
         </Route>
       </Switch>
     </div>
