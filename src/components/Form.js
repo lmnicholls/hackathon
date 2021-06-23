@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRun, getNotRun, getLocation } from "../actions";
+import { Link } from "react-router-dom";
 
 const Form = () => {
   const [temp, setTemp] = useState("");
@@ -11,35 +12,27 @@ const Form = () => {
   // const [snow, setSnow] = useState(false);
   // const [weatherConditions, setWeatherConditions] = useState([]);
 
-  // const { temperature, humidity, conditions } = useSelector(
-  //   (state) => state.currentWeather.dailyWeather[0]
-  // );
+  const { temperature, humidity, conditions } = useSelector(
+    (state) => state.currentWeather.dailyWeather[0]
+  );
 
   const dispatch = useDispatch();
 
   //event handlers
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
     console.log(temp);
     console.log(humidityLevel);
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        const { latitude } = position.coords;
-        const { longitude } = position.coords;
+    const tempNum = parseInt(temp);
+    const humidityNum = parseInt(humidityLevel);
 
-        dispatch(getLocation(latitude, longitude));
-      });
+    if (tempNum <= temperature && humidityNum <= humidity) {
+      dispatch(getRun());
     } else {
-      alert("Sorry, your location was not found.");
+      dispatch(getNotRun());
     }
-    // const tempNum = parseInt(temp);
-    // const humidityNum = parseInt(humidityLevel);
-
-    // if (tempNum <= temperature && humidityNum <= humidity) {
-    //   dispatch(getRun());
-    // } else {
-    //   dispatch(getNotRun());
-    // }
   };
 
   return (
@@ -125,7 +118,13 @@ const Form = () => {
               type="submit"
               onClick={(e) => handleFormSubmit(e)}
             >
-              Submit
+              <Link
+                to="/run"
+                className="submit-link"
+                style={{ textDecoration: "none" }}
+              >
+                Submit
+              </Link>
             </button>
           </form>
         </div>
