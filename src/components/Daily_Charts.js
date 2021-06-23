@@ -28,7 +28,40 @@ const DailyCharts = () => {
           backgroundColor: "rgb(255, 99, 132)",
           borderColor: "rgba(255, 99, 132, 0.2)",
         },
+        {
+          label: "Max Temperature(%)",
+          // hardcoded user data - need to fix!!
+          data: [76, 76, 76, 76, 76, 76, 76, 76, 76],
+          fill: true,
+          backgroundColor: "rgba(25, 90, 132, 0.25)",
+          borderColor: "rgba(255, 99, 132, 0.2)",
+        },
       ],
+    };
+
+    const tempOptions = {
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+          },
+        ],
+      },
+      plugins: {
+        autocolors: false,
+        annotation: {
+          annotations: {
+            box1: {
+              type: "box",
+              yMin: 70,
+              yMax: 76,
+              backgroundColor: "rgba(255, 99, 132, 0.25)",
+            },
+          },
+        },
+      },
     };
 
     const humidityData = {
@@ -41,10 +74,18 @@ const DailyCharts = () => {
           backgroundColor: "rgb(255, 99, 132)",
           borderColor: "rgba(255, 99, 132, 0.2)",
         },
+        {
+          label: "Max Humidity (%)",
+          // hardcoded user data - need to fix!!
+          data: [76, 76, 76, 76, 76, 76, 76, 76, 76],
+          fill: true,
+          backgroundColor: "rgba(25, 90, 132, 0.25)",
+          borderColor: "rgba(255, 99, 132, 0.2)",
+        },
       ],
     };
 
-    const options = {
+    const humidityOptions = {
       scales: {
         yAxes: [
           {
@@ -60,11 +101,15 @@ const DailyCharts = () => {
       <div className="line_graph">
         <Line
           data={tempData}
-          options={{ options, responsive: true, maintainAspectRatio: true }}
+          options={{ tempOptions, responsive: true, maintainAspectRatio: true }}
         />
         <Line
           data={humidityData}
-          options={{ options, responsive: true, maintainAspectRatio: true }}
+          options={{
+            humidityOptions,
+            responsive: true,
+            maintainAspectRatio: true,
+          }}
         />
       </div>
     );
