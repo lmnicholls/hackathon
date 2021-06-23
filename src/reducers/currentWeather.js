@@ -38,4 +38,5 @@ const CurrentWeatherReducer = function (state = DEFAULT_STATE, action) {
   }
 };
 
+//mapStateToProps?
 export default CurrentWeatherReducer;
