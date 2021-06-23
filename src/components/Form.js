@@ -71,7 +71,7 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setSunny(!sunny)}
+                    onChange={(e) => setSunny("sunny")}
                   ></input>
                   Sunny
                 </label>
@@ -81,7 +81,7 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setRain(!rain)}
+                    onChange={(e) => setRain("rain")}
                   ></input>
                   Rain
                 </label>
@@ -90,7 +90,7 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setCloudy(!cloudy)}
+                    onChange={(e) => setCloudy("clouds")}
                   ></input>
                   Cloudy
                 </label>
@@ -99,7 +99,7 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setSnow(!snow)}
+                    onChange={(e) => setSnow("snow")}
                   ></input>
                   Snow
                 </label>
