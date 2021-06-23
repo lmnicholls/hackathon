@@ -9,6 +9,7 @@ import "./App.css";
 import Form from "./components/Form";
 import DailyCharts from "./components/Daily_Charts";
 import Run from "./components/Run";
+import NotRun from "./components/Not-Run";
 import CurrentWeather from "./components/Current_Weather";
 
 function App() {
