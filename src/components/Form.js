@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getRun } from "../actions";
 
 const Form = () => {
   const [temp, setTemp] = useState("");
@@ -9,18 +10,24 @@ const Form = () => {
   const [cloudy, setCloudy] = useState("");
   const [snow, setSnow] = useState("");
 
-  /*
   const { temperature, humidity, conditions } = useSelector(
     (state) => state.currentWeather.dailyWeather[0]
-  );*/
+  );
+
+  const dispatch = useDispatch();
 
   //event handlers
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     //tried parseInt local state and did not match so converting store values to string to meet conditional and compare input values with redux store values
-    //const humidityString = humidity.toString();
-    //const tempString = temperature.toString();
+
+    const humidityString = humidity.toString();
+    const tempString = temperature.toString();
+
+    if (temp <= tempString && humidityLevel <= humidityString) {
+      dispatch(getRun());
+    }
   };
 
   return (

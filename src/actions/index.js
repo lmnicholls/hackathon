@@ -15,3 +15,11 @@ export function getLocation(latitude, longitude) {
     payload: request,
   };
 }
+
+export const GET_RUN = "GET_RUN";
+
+export const getRun = () => {
+  return {
+    type: GET_RUN,
+  };
+};
