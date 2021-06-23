@@ -4,6 +4,7 @@ import moment from "moment";
 
 const DEFAULT_STATE = {
   dailyWeather: [],
+  dataLoaded: false,
 };
 
 const CurrentWeatherReducer = function (state = DEFAULT_STATE, action) {
@@ -32,6 +33,7 @@ const CurrentWeatherReducer = function (state = DEFAULT_STATE, action) {
             conditions: action.payload.data.current.weather[0].main,
           },
         ],
+        dataLoaded: true,
       };
     default:
       return state;
