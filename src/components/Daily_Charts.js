@@ -19,14 +19,15 @@ const DailyCharts = () => {
       (v) => v === hourlyWeather[0].date[0]
     ).length;
 
-    const conditions = hourlyWeather[0].conditions
-      .slice(0, dailyDataPoints)
-      .reduce((obj, condition) => {
-        obj[condition] = (obj[condition] || 0) + 1;
-        return obj;
-      }, {});
-    console.log(Object.keys(conditions));
-    console.log(Object.values(conditions));
+    const time = hourlyWeather[0].time.splice(0, dailyDataPoints);
+    const conditions = hourlyWeather[0].conditions.splice(0, dailyDataPoints);
+
+    // const conditions = hourlyWeather[0].conditions
+    //   .slice(0, dailyDataPoints)
+    //   .reduce((obj, condition) => {
+    //     obj[condition] = (obj[condition] || 0) + 1;
+    //     return obj;
+    //   }, {});
 
     const tempData = {
       labels: hourlyWeather[0].time.slice(0, dailyDataPoints),
@@ -94,24 +95,10 @@ const DailyCharts = () => {
       },
     };
 
-    const conditionsData = {
-      labels: Object.keys(conditions),
-      datasets: [
-        {
-          label: "Today's Conditions",
-          data: Object.values(conditions),
-          fill: false,
-          backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
-          borderColor: ["rgb(255, 99, 32)", "rgb(54, 162, 35)"],
-          borderWidth: 1,
-        },
-      ],
-    };
-
     return (
       <div className="dailyConditions text-center">
         <h1>The Day's Conditions</h1>
-        <div className="graphs">
+        <div className="graphs d-flex justify-content-center">
           <div className="temperatureGraph">
             <h5>Temperature</h5>
             <Line
@@ -134,9 +121,24 @@ const DailyCharts = () => {
               }}
             />
           </div>
-          <div className="conditionGraph">
+        </div>
+        <div className="conditions d-flex justify-content-center">
+          <div>
             <h5>Conditions</h5>
-            <Pie data={conditionsData} />
+            <table className="table table-striped table-responsive table-primary">
+              <tbody>
+                <tr>
+                  {time.map((t) => (
+                    <td>{t}</td>
+                  ))}
+                </tr>
+                <tr>
+                  {conditions.map((c) => (
+                    <td>{c}</td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
