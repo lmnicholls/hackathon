@@ -14,6 +14,10 @@ const CurrentWeather = () => {
   const conditionsMet =
     currentWeather[0].temperature < parseInt(userData.temp) &&
     currentWeather[0].humidity < parseInt(userData.humidity);
+  const tempConditionMet =
+    currentWeather[0].temperature < parseInt(userData.temp);
+  const humidityConditionMet =
+    currentWeather[0].humidity < parseInt(userData.humidity);
 
   const dataLoaded = useSelector((state) => state.hourlyWeather.dataLoaded);
 
@@ -28,28 +32,59 @@ const CurrentWeather = () => {
         <div class="table-div">
           <table className="table table-striped table-responsive table-secondary">
             <tbody>
-              <tr>
-                <td>Temperature</td>
-                <td> {currentWeather[0].temperature} °F</td>
-                <td>
-                  {currentWeather[0].temperature < parseInt(userData.temp) ? (
-                    <div>Met</div>
-                  ) : (
-                    <div>Not Met</div>
-                  )}
-                </td>
-              </tr>
-              <tr>
-                <td>Humidity</td>
-                <td> {currentWeather[0].humidity} %</td>
-                <td>
-                  {currentWeather[0].humidity < parseInt(userData.humidity) ? (
-                    <div>Met</div>
-                  ) : (
-                    <div>Not Met</div>
-                  )}
-                </td>
-              </tr>
+              {tempConditionMet ? (
+                <tr className="table-success">
+                  <td>Temperature</td>
+                  <td> {currentWeather[0].temperature} °F</td>
+                  <td>
+                    {currentWeather[0].temperature < parseInt(userData.temp) ? (
+                      <div>Met</div>
+                    ) : (
+                      <div>Not Met</div>
+                    )}
+                  </td>
+                </tr>
+              ) : (
+                <tr className="table-danger">
+                  <td>Temperature</td>
+                  <td> {currentWeather[0].temperature} °F</td>
+                  <td>
+                    {currentWeather[0].temperature < parseInt(userData.temp) ? (
+                      <div>Met</div>
+                    ) : (
+                      <div>Not Met</div>
+                    )}
+                  </td>
+                </tr>
+              )}
+              {humidityConditionMet ? (
+                <tr className="table-success">
+                  <td>Humidity</td>
+                  <td> {currentWeather[0].humidity} %</td>
+                  <td>
+                    {currentWeather[0].humidity <
+                    parseInt(userData.humidity) ? (
+                      <div>Met</div>
+                    ) : (
+                      <div>Not Met</div>
+                    )}
+                  </td>
+                </tr>
+              ) : (
+                <tr className="table-danger">
+                  <td>Humidity</td>
+                  <td> {currentWeather[0].humidity} %</td>
+                  <td>
+                    {currentWeather[0].humidity <
+                    parseInt(userData.humidity) ? (
+                      <div>Met</div>
+                    ) : (
+                      <div>Not Met</div>
+                    )}
+                  </td>
+                </tr>
+              )}
+
               <tr>
                 <td>Condition</td>
                 <td> {currentWeather[0].conditions}</td>
