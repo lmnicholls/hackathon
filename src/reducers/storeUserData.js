@@ -1,6 +1,4 @@
 import { STORE_USER_DATA } from "../actions";
-import { v4 as uuidv4 } from "uuid";
-import moment from "moment";
 
 const DEFAULT_STATE = {
   temp: null,
