@@ -1,11 +1,9 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import DailyCharts from "./Daily_Charts";
 import { Link } from "react-router-dom";
 
 const CurrentWeather = () => {
-  //const dispatch = useDispatch();
-
   const currentWeather = useSelector(
     (state) => state.currentWeather.dailyWeather
   );

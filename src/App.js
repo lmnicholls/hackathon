@@ -1,6 +1,5 @@
 import "./App.css";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 //style
 import "bootstrap/dist/css/bootstrap.min.css";

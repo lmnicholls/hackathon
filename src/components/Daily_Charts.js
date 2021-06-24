@@ -7,6 +7,7 @@ const DailyCharts = () => {
   const hourlyWeather = useSelector(
     (state) => state.hourlyWeather.hourlyWeather
   );
+
   const userData = useSelector((state) => state.userData);
   const dataLoaded = useSelector((state) => state.hourlyWeather.dataLoaded);
 
@@ -28,6 +29,22 @@ const DailyCharts = () => {
       parseInt(userData.humidity)
     );
 
+    const tempPointColors = [...hourlyWeather][0].temperature
+      .slice(0, dailyDataPoints)
+      .map((dataPoint) => {
+        if (dataPoint > userData.temp) {
+          return "rgb(235, 64, 52)";
+        } else return "rgb(125, 209, 142)";
+      });
+
+    const humidityPointColors = [...hourlyWeather][0].humidity
+      .slice(0, dailyDataPoints)
+      .map((dataPoint) => {
+        if (dataPoint > userData.humidity) {
+          return "rgb(235, 64, 52)";
+        } else return "rgb(125, 209, 142)";
+      });
+
     const tempData = {
       labels: [...hourlyWeather][0].time.slice(0, dailyDataPoints),
       datasets: [
@@ -37,6 +54,7 @@ const DailyCharts = () => {
           fill: false,
           backgroundColor: "rgb(92, 145, 173)",
           borderColor: "rgba(92, 145, 173, 0.2)",
+          pointBackgroundColor: tempPointColors,
         },
         {
           label: "Max Temperature(%)",
@@ -69,6 +87,7 @@ const DailyCharts = () => {
           fill: false,
           backgroundColor: "rgb(92, 145, 173)",
           borderColor: "rgba(92, 145, 173, 0.2)",
+          pointBackgroundColor: humidityPointColors,
         },
         {
           label: "Max Humidity (%)",
