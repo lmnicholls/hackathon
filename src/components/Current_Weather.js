@@ -11,6 +11,10 @@ const CurrentWeather = () => {
   );
   const userData = useSelector((state) => state.userData);
 
+  const conditionsMet =
+    currentWeather[0].temperature < parseInt(userData.temp) &&
+    currentWeather[0].humidity < parseInt(userData.humidity);
+
   const dataLoaded = useSelector((state) => state.hourlyWeather.dataLoaded);
 
   if (dataLoaded === true) {
@@ -28,9 +32,9 @@ const CurrentWeather = () => {
                 <td> {currentWeather[0].temperature} °F</td>
                 <td>
                   {currentWeather[0].temperature < parseInt(userData.temp) ? (
-                    <div>Not Met</div>
-                  ) : (
                     <div>Met</div>
+                  ) : (
+                    <div>Not Met</div>
                   )}
                 </td>
               </tr>
@@ -39,9 +43,9 @@ const CurrentWeather = () => {
                 <td> {currentWeather[0].humidity} %</td>
                 <td>
                   {currentWeather[0].humidity < parseInt(userData.humidity) ? (
-                    <div>Not Met</div>
-                  ) : (
                     <div>Met</div>
+                  ) : (
+                    <div>Not Met</div>
                   )}
                 </td>
               </tr>
@@ -53,17 +57,16 @@ const CurrentWeather = () => {
             </tbody>
           </table>
         </div>
-        {currentWeather[0].temperature < parseInt(userData.temp) &&
-        currentWeather[0].humidity < parseInt(userData.humidity) ? (
+        {conditionsMet ? (
+          <div>
+            <h4>It's the Perfect time to Run! Get your sweat on!</h4>
+          </div>
+        ) : (
           <div>
             <h4>
               It's NOT the perfect time to Run. Would a time later today work
               for you?
             </h4>
-          </div>
-        ) : (
-          <div>
-            <h4>It's the Perfect time to Run! Get your sweat on!</h4>
           </div>
         )}
 
