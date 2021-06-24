@@ -24,6 +24,19 @@ const CurrentWeather = () => {
   if (dataLoaded === true) {
     return (
       <div className="currentWeather text-center">
+        {conditionsMet ? (
+          <div className="results">
+            <h4>It's the Perfect time to Run! Get your sweat on!</h4>
+          </div>
+        ) : (
+          <div className="results">
+            <h4>
+              It's NOT the perfect time to Run. Would a time later today work
+              for you?
+            </h4>
+          </div>
+        )}
+
         <h3>Current Weather Conditions</h3>
         <h6>
           {currentWeather[0].date} at {currentWeather[0].time}
@@ -85,25 +98,15 @@ const CurrentWeather = () => {
               )}
 
               <tr>
-                <td>Condition</td>
+                <td>
+                  <h5>Condition</h5>
+                </td>
                 <td> {currentWeather[0].conditions}</td>
                 <td></td>
               </tr>
             </tbody>
           </table>
         </div>
-        {conditionsMet ? (
-          <div>
-            <h4>It's the Perfect time to Run! Get your sweat on!</h4>
-          </div>
-        ) : (
-          <div>
-            <h4>
-              It's NOT the perfect time to Run. Would a time later today work
-              for you?
-            </h4>
-          </div>
-        )}
 
         {/* <button className="btn btn-primary col-auto back-button"> */}
         {/* <Link to="/" className="back-link">

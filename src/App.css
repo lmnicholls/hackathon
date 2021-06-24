@@ -3,7 +3,7 @@
   min-height: 12vh;
   padding-top: 1rem;
   width: 100%;
-  background-color: rgb(224, 79, 68);
+  background-color: #48484a;
   color: white;
   font-family: "Lobster", cursive;
 }
@@ -41,7 +41,31 @@
 }
 
 .submit-button:hover {
-  background-color: rgb(224, 79, 68);
+  background-color: rgb(62, 185, 99);
+}
+
+.update-preferences {
+  margin-top: 2.5rem;
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: 3px solid #48484a;
+  background: transparent;
+  color: white;
+  background-color: #48484a;
+  transition: all 0.3s ease;
+}
+
+.update-preferences:hover {
+  background-color: rgb(62, 185, 99);
+}
+
+.results {
+  margin-top: 3rem;
+  min-height: 15vh;
+
+  padding-top: 2rem;
 }
 
 .temperatureGraph {

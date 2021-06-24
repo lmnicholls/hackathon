@@ -183,7 +183,7 @@ const Form = () => {
       ) : (
         <div className="text-center">
           <button
-            className="btn btn-success submit"
+            className="update-preferences"
             type="submit"
             onClick={(e) => handleUpdatePreferences(e)}
           >
