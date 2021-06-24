@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getRun, getNotRun, storeUserData } from "../actions";
+import { getRun, getNotRun, storeUserData, getLocation } from "../actions";
 import { Link } from "react-router-dom";
 
 const Form = () => {
@@ -14,9 +14,9 @@ const Form = () => {
   // const [thunderstorm, setTHunderstorm] = useState(false);
   // const [weatherConditions, setWeatherConditions] = useState([]);
 
-  const { temperature, humidity, conditions } = useSelector(
-    (state) => state.currentWeather.dailyWeather[0]
-  );
+  // const { temperature, humidity, conditions } = useSelector(
+  //(state) => state.currentWeather.dailyWeather[0]
+  //);
 
   const dispatch = useDispatch();
 
@@ -38,13 +38,15 @@ const Form = () => {
       )
     );
 
-    const tempNum = parseInt(temp);
-    const humidityNum = parseInt(humidityLevel);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const { latitude } = position.coords;
+        const { longitude } = position.coords;
 
-    if (tempNum <= temperature && humidityNum <= humidity) {
-      dispatch(getRun());
+        dispatch(getLocation(latitude, longitude));
+      });
     } else {
-      dispatch(getNotRun());
+      alert("Sorry, your location was not found.");
     }
   };
 

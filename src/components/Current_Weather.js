@@ -1,7 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import DailyCharts from "./Daily_Charts";
+import { Link } from "react-router-dom";
 
 const CurrentWeather = () => {
+  //const dispatch = useDispatch();
+
   const currentWeather = useSelector(
     (state) => state.currentWeather.dailyWeather
   );
@@ -23,7 +27,7 @@ const CurrentWeather = () => {
                 <td>Temperature</td>
                 <td> {currentWeather[0].temperature} °F</td>
                 <td>
-                  {currentWeather[0].temperature > userData.temp ? (
+                  {currentWeather[0].temperature < parseInt(userData.temp) ? (
                     <div>Not Met</div>
                   ) : (
                     <div>Met</div>
@@ -34,7 +38,7 @@ const CurrentWeather = () => {
                 <td>Humidity</td>
                 <td> {currentWeather[0].humidity} %</td>
                 <td>
-                  {currentWeather[0].humidity > userData.humidity ? (
+                  {currentWeather[0].humidity < parseInt(userData.humidity) ? (
                     <div>Not Met</div>
                   ) : (
                     <div>Met</div>
@@ -49,8 +53,8 @@ const CurrentWeather = () => {
             </tbody>
           </table>
         </div>
-        {currentWeather[0].temperature > parseInt(userData.temp) &&
-        currentWeather[0].humidity > parseInt(userData.humidity) ? (
+        {currentWeather[0].temperature < parseInt(userData.temp) &&
+        currentWeather[0].humidity < parseInt(userData.humidity) ? (
           <div>
             <h4>
               It's NOT the perfect time to Run. Would a time later today work
@@ -62,6 +66,14 @@ const CurrentWeather = () => {
             <h4>It's the Perfect time to Run! Get your sweat on!</h4>
           </div>
         )}
+
+        <DailyCharts />
+
+        <button className="btn btn-primary col-auto back-button">
+          <Link to="/" className="back-link">
+            Back
+          </Link>
+        </button>
       </div>
     );
   } else {
