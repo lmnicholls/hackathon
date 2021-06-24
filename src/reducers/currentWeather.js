@@ -1,4 +1,4 @@
-import { GET_LOCATION } from "../actions";
+import { GET_LOCATION, UPDATE_PREFERENCES } from "../actions";
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 
@@ -35,6 +35,8 @@ const CurrentWeatherReducer = function (state = DEFAULT_STATE, action) {
         ],
         dataLoaded: true,
       };
+    case UPDATE_PREFERENCES:
+      return DEFAULT_STATE;
     default:
       return state;
   }

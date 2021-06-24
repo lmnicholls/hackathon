@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+// import { Switch, Route } from "react-router-dom";
 //style
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -9,7 +9,7 @@ import Form from "./components/Form";
 //import DailyCharts from "./components/Daily_Charts";
 //import Run from "./components/Run";
 //import NotRun from "./components/Not-Run";
-import CurrentWeather from "./components/Current_Weather";
+// import CurrentWeather from "./components/Current_Weather";
 //import { getLocation } from "./actions";
 
 function App() {
@@ -34,14 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <Form />
-        </Route>
-        <Route path="/run">
-          <CurrentWeather />
-        </Route>
-      </Switch>
+      <Form />
     </div>
   );
 }

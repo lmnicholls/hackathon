@@ -1,9 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import DailyCharts from "./Daily_Charts";
-import { Link } from "react-router-dom";
+// import DailyCharts from "./Daily_Charts";
+// import { Link } from "react-router-dom";
 
 const CurrentWeather = () => {
+  //const dispatch = useDispatch();
+
   const currentWeather = useSelector(
     (state) => state.currentWeather.dailyWeather
   );
@@ -22,7 +24,6 @@ const CurrentWeather = () => {
   if (dataLoaded === true) {
     return (
       <div className="currentWeather text-center">
-        <h1>Should I Run Right Now?</h1>
         <h3>Current Weather Conditions</h3>
         <h6>
           {currentWeather[0].date} at {currentWeather[0].time}
@@ -104,13 +105,11 @@ const CurrentWeather = () => {
           </div>
         )}
 
-        <DailyCharts />
-
-        <button className="btn btn-primary col-auto back-button">
-          <Link to="/" className="back-link">
+        {/* <button className="btn btn-primary col-auto back-button"> */}
+        {/* <Link to="/" className="back-link">
             Back
-          </Link>
-        </button>
+          </Link> */}
+        {/* </button> */}
       </div>
     );
   } else {

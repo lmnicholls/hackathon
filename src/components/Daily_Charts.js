@@ -117,7 +117,7 @@ const DailyCharts = () => {
         <h3>The Day's Conditions</h3>
         <div className="graphs d-flex justify-content-center">
           <div className="temperatureGraph">
-            <h5>Temperature</h5>
+            <h5>Temperature (°F)</h5>
             <Line
               data={tempData}
               options={{
@@ -128,7 +128,7 @@ const DailyCharts = () => {
             />
           </div>
           <div className="humidityGraph">
-            <h5>Humidity</h5>
+            <h5>Humidity (%)</h5>
             <Line
               data={humidityData}
               options={{
