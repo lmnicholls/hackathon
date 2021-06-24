@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { storeUserData, getLocation, updatePreferences } from "../actions";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import CurrentWeather from "./Current_Weather";
 import DailyCharts from "./Daily_Charts";
 
