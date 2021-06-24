@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getRun, getNotRun } from "../actions";
+import { getRun, getNotRun, storeUserData } from "../actions";
 import { Link } from "react-router-dom";
 
 const Form = () => {
@@ -22,6 +22,19 @@ const Form = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    dispatch(
+      storeUserData(
+        temp,
+        humidityLevel
+        // clear,
+        // clouds,
+        // snow,
+        // rain,
+        // drizzle,
+        // thunderstorm
+      )
+    );
 
     const tempNum = parseInt(temp);
     const humidityNum = parseInt(humidityLevel);
