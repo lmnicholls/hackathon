@@ -114,8 +114,9 @@ const DailyCharts = () => {
 
     return (
       <div className="dailyConditions text-center">
-        <h3>The Day's Conditions</h3>
-        <div className="graphs d-flex justify-content-center">
+        <br></br>
+        <h4 className="daily-conditions-chart">The Day's Conditions</h4>
+        <div className="graphs d-flex justify-content-center ">
           <div className="temperatureGraph">
             <h5>Temperature (°F)</h5>
             <Line
@@ -139,9 +140,10 @@ const DailyCharts = () => {
             />
           </div>
         </div>
+        <br></br>
         <div className="conditions d-flex justify-content-center">
-          <div>
-            <h5>Conditions</h5>
+          <div className="conditions-chart">
+            <h4>Conditions</h4>
             <table className="table table-striped table-responsive table-primary">
               <tbody>
                 <tr>

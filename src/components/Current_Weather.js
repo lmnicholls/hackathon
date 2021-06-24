@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
 // import DailyCharts from "./Daily_Charts";
 // import { Link } from "react-router-dom";
 
@@ -26,18 +27,24 @@ const CurrentWeather = () => {
       <div className="currentWeather text-center">
         {conditionsMet ? (
           <div className="results">
-            <h4>It's the Perfect time to Run! Get your sweat on!</h4>
+            <h3>
+              It's the <span className="success">Perfect</span> time to Run!{" "}
+            </h3>
+            <p>Get your sweat on!</p>
           </div>
         ) : (
           <div className="results">
-            <h4>
-              It's NOT the perfect time to Run. Would a time later today work
-              for you?
-            </h4>
+            <h3>
+              It's <span className="fail">NOT</span> the perfect time to Run.
+            </h3>
+            <p>
+              Would a time later today work for you? Checkout the data below to
+              find the perfect time or try a new at home workout!
+            </p>
           </div>
         )}
 
-        <h3>Current Weather Conditions</h3>
+        <h4 className="current-weather-title">Current Weather Conditions</h4>
         <h6>
           {currentWeather[0].date} at {currentWeather[0].time}
         </h6>
@@ -98,9 +105,7 @@ const CurrentWeather = () => {
               )}
 
               <tr>
-                <td>
-                  <h5>Condition</h5>
-                </td>
+                <td>Condition</td>
                 <td> {currentWeather[0].conditions}</td>
                 <td></td>
               </tr>
