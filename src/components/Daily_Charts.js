@@ -71,7 +71,6 @@ const DailyCharts = () => {
         },
         {
           label: "Max Humidity (%)",
-          // hardcoded user data - need to fix!!
           data: userMaxHumidity,
           fill: true,
           backgroundColor: "rgba(86, 156, 93, 0.25)",
