@@ -10,10 +10,6 @@ const Run = () => {
 
   const { idealTime, notIdealTime } = useSelector((state) => state.run);
 
-  const handleBackButton = () => {
-    dispatch(setDefaultRun());
-  };
-
   return (
     <div>
       {idealTime ? (
@@ -28,10 +24,7 @@ const Run = () => {
       )}
       <CurrentWeather />
       <DailyCharts />
-      <button
-        className="btn btn-primary col-auto back-button"
-        onClick={handleBackButton}
-      >
+      <button className="btn btn-primary col-auto back-button">
         <Link to="/" className="back-link">
           Back
         </Link>

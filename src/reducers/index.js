@@ -7,7 +7,6 @@ import runReducer from "./runReducer";
 const rootReducer = combineReducers({
   currentWeather: CurrentWeatherReducer,
   hourlyWeather: HourlyWeatherReducer,
-  run: runReducer,
   userData: StoreUserData,
 });
 
