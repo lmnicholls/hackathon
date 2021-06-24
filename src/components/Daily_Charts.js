@@ -12,9 +12,10 @@ const DailyCharts = () => {
   if (dataLoaded === false) {
     return <div></div>;
   } else {
-    const dailyDataPoints = [...hourlyWeather][0].date.filter(
-      (v) => v === [...hourlyWeather][0].date[0]
-    ).length;
+    const dailyDataPoints =
+      [...hourlyWeather][0].date.filter(
+        (v) => v === [...hourlyWeather][0].date[0]
+      ).length + 1;
 
     const time = [...hourlyWeather[0].time].splice(0, dailyDataPoints);
     const conditions = [...hourlyWeather[0].conditions].splice(

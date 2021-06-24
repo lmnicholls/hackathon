@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getWorkoutVideo } from "../actions";
 
@@ -8,28 +8,30 @@ const WorkoutVideo = () => {
   );
   const userData = useSelector((state) => state.userData);
   const dataLoaded = useSelector((state) => state.currentWeather.dataLoaded);
-  const videoId = useSelector((state) => state.workoutVideo);
-  console.log(videoId);
-  console.log("data", dataLoaded);
+  const videoId = useSelector((state) => state.workoutVideo.videoId);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getWorkoutVideo());
+  }, {});
 
   if (dataLoaded) {
     const idealTemp = currentWeather[0].temperature < parseInt(userData.temp);
     const idealHumidity =
       currentWeather[0].humidity < parseInt(userData.humidity);
-    console.log("temps", idealTemp, idealHumidity);
-    if (!idealTemp && !idealHumidity) {
-      dispatch(getWorkoutVideo());
 
+    if (!idealTemp && !idealHumidity) {
       return (
-        <div class="video">
+        <div class="video text-center">
+          <h3>Not looking good today? How about a workout video instead?</h3>
           <iframe
             width="560"
             height="315"
-            src={"https://www.youtube.com/embed/" + videoId}
+            src={`https://www.youtube.com/embed/${videoId}`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       );
