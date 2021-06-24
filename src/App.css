@@ -41,7 +41,7 @@
 }
 
 .submit-button:hover {
-  background-color: rgb(62, 185, 99);
+  background-color: rgb(243, 148, 59);
 }
 
 .update-preferences {
@@ -58,14 +58,27 @@
 }
 
 .update-preferences:hover {
-  background-color: rgb(62, 185, 99);
+  background-color: rgb(243, 148, 59);
 }
 
 .results {
   margin-top: 3rem;
   min-height: 15vh;
+  padding-top: 2rem 2rem 0rem 0rem;
+}
 
-  padding-top: 2rem;
+p {
+  font-size: 1.2rem;
+}
+
+.success {
+  color: rgb(62, 185, 99);
+  font-weight: bold;
+}
+
+.fail {
+  color: rgb(245, 21, 13);
+  font-weight: bold;
 }
 
 .temperatureGraph {
@@ -79,4 +92,17 @@
 .table-div {
   width: 50%;
   margin: 0 auto !important;
+}
+
+.current-weather-title {
+  padding-top: 2rem;
+}
+
+.daily-conditions-chart {
+  padding-top: 2rem;
+}
+
+.conditions-chart {
+  padding-top: 2rem;
+  margin-bottom: 3rem;
 }
