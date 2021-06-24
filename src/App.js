@@ -34,14 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <Form />
-        </Route>
-        <Route path="/run">
-          <CurrentWeather />
-        </Route>
-      </Switch>
+      <Form />
     </div>
   );
 }
