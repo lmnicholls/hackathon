@@ -1,28 +1,30 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Line, Pie } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 const DailyCharts = () => {
   const hourlyWeather = useSelector(
     (state) => state.hourlyWeather.hourlyWeather
   );
+  const userData = useSelector((state) => state.userData);
   const dataLoaded = useSelector((state) => state.hourlyWeather.dataLoaded);
 
   if (dataLoaded === false) {
-    return (
-      <div>
-        <h1>Let's See If You Should Run Today?</h1>
-      </div>
-    );
+    return <div></div>;
   } else {
-    const dailyDataPoints = [...hourlyWeather][0].date.filter(
-      (v) => v === [...hourlyWeather][0].date[0]
-    ).length;
+    const dailyDataPoints =
+      [...hourlyWeather][0].date.filter(
+        (v) => v === [...hourlyWeather][0].date[0]
+      ).length + 1;
 
     const time = [...hourlyWeather[0].time].splice(0, dailyDataPoints);
     const conditions = [...hourlyWeather[0].conditions].splice(
       0,
       dailyDataPoints
+    );
+    const userMaxTemp = Array(dailyDataPoints).fill(parseInt(userData.temp));
+    const userMaxHumidity = Array(dailyDataPoints).fill(
+      parseInt(userData.humidity)
     );
 
     const tempData = {
@@ -37,8 +39,7 @@ const DailyCharts = () => {
         },
         {
           label: "Max Temperature(%)",
-          // hardcoded user data - need to fix!!
-          data: [76, 76, 76, 76, 76, 76, 76, 76, 76],
+          data: userMaxTemp,
           fill: true,
           backgroundColor: "rgba(86, 156, 93, 0.25)",
           borderColor: "rgba(86, 156, 93, 0.2)",
@@ -71,7 +72,7 @@ const DailyCharts = () => {
         {
           label: "Max Humidity (%)",
           // hardcoded user data - need to fix!!
-          data: [76, 76, 76, 76, 76, 76, 76, 76, 76],
+          data: userMaxHumidity,
           fill: true,
           backgroundColor: "rgba(86, 156, 93, 0.25)",
           borderColor: "rgba(86, 156, 93, 0.2)",
@@ -93,7 +94,7 @@ const DailyCharts = () => {
 
     return (
       <div className="dailyConditions text-center">
-        <h1>The Day's Conditions</h1>
+        <h3>The Day's Conditions</h3>
         <div className="graphs d-flex justify-content-center">
           <div className="temperatureGraph">
             <h5>Temperature</h5>
