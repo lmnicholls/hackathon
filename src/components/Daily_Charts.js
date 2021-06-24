@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Line } from "react-chartjs-2";
+import WorkoutVideo from "./Workout_Video";
 
 const DailyCharts = () => {
   const hourlyWeather = useSelector(
@@ -138,6 +139,7 @@ const DailyCharts = () => {
             </table>
           </div>
         </div>
+        <WorkoutVideo />
       </div>
     );
   }

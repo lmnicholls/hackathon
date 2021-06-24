@@ -20,6 +20,7 @@ const CurrentWeather = () => {
   if (dataLoaded === true) {
     return (
       <div className="currentWeather text-center">
+        <h1>Should I Run Right Now?</h1>
         <h3>Current Weather Conditions</h3>
         <h6>
           {currentWeather[0].date} at {currentWeather[0].time}

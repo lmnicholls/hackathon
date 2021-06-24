@@ -32,3 +32,11 @@
 .back-link:hover {
   color: white;
 }
+
+.submit {
+  margin-top: 10px;
+}
+
+.header {
+  text-align: center;
+}
