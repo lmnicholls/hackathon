@@ -53,8 +53,14 @@ const Form = () => {
   return (
     <div className="container-fluid">
       <div className="row">
+        <h1 className="header">Should I Run Right Now?</h1>
+        <h5 className="header">
+          Enter your ideal running conditions and see if today is a great day to
+          run!
+        </h5>
+      </div>
+      <div className="row">
         <div className="col-md-6 offset-3">
-          <h3 className="header">Weather Preferences</h3>
           <form>
             <div className="form-group">
               <label className="label">
