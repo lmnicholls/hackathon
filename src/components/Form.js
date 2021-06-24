@@ -60,19 +60,19 @@ const Form = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="">
       <h1 className="header">Should I Run Right Now?</h1>
       {!dataLoaded ? (
         <div>
           <div className="row">
-            <h5 className="header">
+            <h5 className="sub-header">
               Enter your ideal running conditions and see if today is a great
               day to run!
             </h5>
           </div>
           <div className="row">
             <div className="col-md-6 offset-3">
-              <form>
+              <form className="form">
                 <div className="form-group">
                   <label className="label">
                     <strong>Temperature:</strong>
@@ -164,7 +164,7 @@ const Form = () => {
           </div> */}
 
                 <button
-                  className="btn btn-primary submit"
+                  className="submit-button"
                   type="submit"
                   onClick={(e) => handleFormSubmit(e)}
                 >
@@ -183,7 +183,7 @@ const Form = () => {
       ) : (
         <div className="text-center">
           <button
-            className="btn btn-success submit"
+            className="update-preferences"
             type="submit"
             onClick={(e) => handleUpdatePreferences(e)}
           >
