@@ -15,7 +15,6 @@
   margin: 0 auto !important;
 }
 
-<<<<<<< HEAD
 .submit-link {
   text-decoration: none;
   color: white;
@@ -32,12 +31,4 @@
 
 .back-link:hover {
   color: white;
-=======
-.submit {
-  margin-top: 10px;
-}
-
-.header {
-  text-align: center;
->>>>>>> 39e6da770fa2c71d1b1b59a0449dc2f62cf1e2ac
 }

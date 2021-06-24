@@ -37,6 +37,21 @@ export function getWorkoutVideo() {
   };
 }
 
+export const GET_RUN = "GET_RUN";
+
+export const getRun = () => {
+  return {
+    type: GET_RUN,
+  };
+};
+export const GET_NOT_RUN = "GET_NOT_RUN";
+
+export const getNotRun = () => {
+  return {
+    type: GET_NOT_RUN,
+  };
+};
+
 export const SET_DEFAULT_RUN = "SET_DEFAULT_RUN";
 
 export const setDefaultRun = () => {
