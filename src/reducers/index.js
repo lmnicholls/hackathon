@@ -2,13 +2,13 @@ import { combineReducers } from "redux";
 import CurrentWeatherReducer from "./currentWeather";
 import HourlyWeatherReducer from "./hourlyWeather";
 import StoreUserData from "./storeUserData";
-import runReducer from "./runReducer";
+import WorkoutVideoReducer from "./workoutVideo";
 
 const rootReducer = combineReducers({
   currentWeather: CurrentWeatherReducer,
   hourlyWeather: HourlyWeatherReducer,
-  run: runReducer,
   userData: StoreUserData,
+  workoutVideo: WorkoutVideoReducer,
 });
 
 export default rootReducer;

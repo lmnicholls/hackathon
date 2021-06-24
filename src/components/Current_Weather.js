@@ -12,7 +12,7 @@ const CurrentWeather = () => {
   if (dataLoaded === true) {
     return (
       <div className="currentWeather text-center">
-        <h1>Current Weather Conditions</h1>
+        <h3>Current Weather Conditions</h3>
         <h6>
           {currentWeather[0].date} at {currentWeather[0].time}
         </h6>
@@ -44,15 +44,28 @@ const CurrentWeather = () => {
               <tr>
                 <td>Condition</td>
                 <td> {currentWeather[0].conditions}</td>
-                <td>Condition met/not met</td>
+                <td></td>
               </tr>
             </tbody>
           </table>
         </div>
+        {currentWeather[0].temperature > parseInt(userData.temp) &&
+        currentWeather[0].humidity > parseInt(userData.humidity) ? (
+          <div>
+            <h4>
+              It's NOT the perfect time to Run. Would a time later today work
+              for you?
+            </h4>
+          </div>
+        ) : (
+          <div>
+            <h4>It's the Perfect time to Run! Get your sweat on!</h4>
+          </div>
+        )}
       </div>
     );
   } else {
-    return <h1>Hello</h1>;
+    return <div></div>;
   }
 };
 

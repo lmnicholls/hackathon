@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getRun, getNotRun, getLocation, storeUserData } from "../actions";
+import { useDispatch } from "react-redux";
+import { getLocation, storeUserData } from "../actions";
 
 const Form = () => {
   const [temp, setTemp] = useState("");
   const [humidityLevel, setHumidityLevel] = useState("");
-  // const [sunny, setSunny] = useState(false);
-  // const [rain, setRain] = useState(false);
-  // const [cloudy, setCloudy] = useState(false);
+  // const [clear, setClear] = useState(false);
+  // const [clouds, setClouds] = useState(false);
   // const [snow, setSnow] = useState(false);
+  // const [rain, setRain] = useState(false);
+  // const [drizzle, setDrizzle] = useState(false);
+  // const [thunderstorm, setTHunderstorm] = useState(false);
   // const [weatherConditions, setWeatherConditions] = useState([]);
 
   // const { temperature, humidity, conditions } = useSelector(
@@ -20,7 +22,18 @@ const Form = () => {
   //event handlers
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(storeUserData(temp, humidityLevel));
+    dispatch(
+      storeUserData(
+        temp,
+        humidityLevel
+        // clear,
+        // clouds,
+        // snow,
+        // rain,
+        // drizzle,
+        // thunderstorm
+      )
+    );
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         const { latitude } = position.coords;
@@ -31,9 +44,6 @@ const Form = () => {
     } else {
       alert("Sorry, your location was not found.");
     }
-    // const tempNum = parseInt(temp);
-    // const humidityNum = parseInt(humidityLevel);
-
     // if (tempNum <= temperature && humidityNum <= humidity) {
     //   dispatch(getRun());
     // } else {
@@ -45,17 +55,17 @@ const Form = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-6 offset-3">
-          <h1 className="header">Weather Preferences</h1>
+          <h3 className="header">Weather Preferences</h3>
           <form>
             <div className="form-group">
               <label className="label">
                 <strong>Temperature:</strong>
               </label>
               <input
-                type="text"
                 className="form-control"
                 placeholder="Enter max run temp F"
                 required
+                type="number"
                 value={temp}
                 onChange={(e) => setTemp(e.target.value)}
               ></input>
@@ -66,7 +76,8 @@ const Form = () => {
                 <strong>Humidity:</strong>
               </label>
               <input
-                type="text"
+                type="number"
+                required
                 className="form-control"
                 value={humidityLevel}
                 placeholder="max % humidity"
@@ -82,19 +93,36 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => {
-                      setSunny(!sunny);
+                    onChange={() => {
+                      setClear(!clear);
                     }}
                   ></input>
-                  Sunny
+                  Clear
                 </label>
               </div>
-
               <div className="checkbox">
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setRain(!rain)}
+                    onChange={() => setClouds(!clouds)}
+                  ></input>
+                  Clouds
+                </label>
+              </div>
+              <div className="checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    onChange={() => setSnow(!snow)}
+                  ></input>
+                  Snow
+                </label>
+              </div>
+              <div className="checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    onChange={() => setRain(!rain)}
                   ></input>
                   Rain
                 </label>
@@ -103,24 +131,24 @@ const Form = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setCloudy(!cloudy)}
+                    onChange={() => setDrizzle(!drizzle)}
                   ></input>
-                  Cloudy
+                  Drizzle
                 </label>
               </div>
               <div className="checkbox">
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => setSnow(!snow)}
+                    onChange={() => setTHunderstorm(!thunderstorm)}
                   ></input>
-                  Snow
+                  Thunderstorms
                 </label>
               </div>
             </div> */}
 
             <button
-              className="btn btn-primary col-auto location"
+              className="btn btn-primary submit"
               type="submit"
               onClick={(e) => handleFormSubmit(e)}
             >
