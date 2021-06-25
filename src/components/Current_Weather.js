@@ -1,12 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-// import DailyCharts from "./Daily_Charts";
-// import { Link } from "react-router-dom";
-
 const CurrentWeather = () => {
-  //const dispatch = useDispatch();
-
   const currentWeather = useSelector(
     (state) => state.currentWeather.dailyWeather
   );
@@ -112,12 +107,6 @@ const CurrentWeather = () => {
             </tbody>
           </table>
         </div>
-
-        {/* <button className="btn btn-primary col-auto back-button"> */}
-        {/* <Link to="/" className="back-link">
-            Back
-          </Link> */}
-        {/* </button> */}
       </div>
     );
   } else {

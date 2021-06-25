@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { storeUserData, getLocation, updatePreferences } from "../actions";
-// import { Link } from "react-router-dom";
 import CurrentWeather from "./Current_Weather";
 import DailyCharts from "./Daily_Charts";
 
@@ -9,38 +8,15 @@ const Form = () => {
   const [temp, setTemp] = useState("");
   const [humidityLevel, setHumidityLevel] = useState("");
 
-  // const [clear, setClear] = useState(false);
-  // const [clouds, setClouds] = useState(false);
-  // const [snow, setSnow] = useState(false);
-  // const [rain, setRain] = useState(false);
-  // const [drizzle, setDrizzle] = useState(false);
-  // const [thunderstorm, setTHunderstorm] = useState(false);
-  // const [weatherConditions, setWeatherConditions] = useState([]);
-
-  // const { temperature, humidity, conditions } = useSelector(
-  //(state) => state.currentWeather.dailyWeather[0]
-  //);
   let dataLoaded = useSelector((state) => state.currentWeather.dataLoaded);
 
   const dispatch = useDispatch();
 
   //event handlers
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(
-      storeUserData(
-        temp,
-        humidityLevel
-        // clear,
-        // clouds,
-        // snow,
-        // rain,
-        // drizzle,
-        // thunderstorm
-      )
-    );
+    dispatch(storeUserData(temp, humidityLevel));
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
@@ -101,80 +77,12 @@ const Form = () => {
                   ></input>
                 </div>
 
-                {/* <div className="form-group weather-conditions">
-            <label className="label">
-              <strong>Weather Conditions:</strong>
-            </label>
-            <div className="checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={() => {
-                    setClear(!clear);
-                  }}
-                ></input>
-                Clear
-              </label>
-            </div>
-            <div className="checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={() => setClouds(!clouds)}
-                ></input>
-                Clouds
-              </label>
-            </div>
-            <div className="checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={() => setSnow(!snow)}
-                ></input>
-                Snow
-              </label>
-            </div>
-            <div className="checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={() => setRain(!rain)}
-                ></input>
-                Rain
-              </label>
-            </div>
-            <div className="checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={() => setDrizzle(!drizzle)}
-                ></input>
-                Drizzle
-              </label>
-            </div>
-            <div className="checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={() => setTHunderstorm(!thunderstorm)}
-                ></input>
-                Thunderstorms
-              </label>
-            </div>
-          </div> */}
-
                 <button
                   className="submit-button"
                   type="submit"
                   onClick={(e) => handleFormSubmit(e)}
                 >
-                  {/* <Link
-              to="/run"
-              className="submit-link"
-              style={{ textDecoration: "none" }}
-            > */}
                   Submit
-                  {/* </Link> */}
                 </button>
               </form>
             </div>
