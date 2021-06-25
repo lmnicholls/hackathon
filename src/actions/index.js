@@ -4,7 +4,7 @@ const ROOT_URL = "https://api.openweathermap.org/data/2.5/onecall?";
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 const YOUTUBE_URL =
-  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=workout&type=video&videoEmbeddable=true&key=AIzaSyCbSgQv-AHIhdxOx-h06_jfyHVpwpRY_UA";
+  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=workout&type=video&videoEmbeddable=true&key=AIzaSyCbSgQv-AHIhdxOx-h06_jfyHVpwpRY_UA";
 
 export const GET_LOCATION = "GET_LOCATION";
 export const STORE_USER_DATA = "STORE_USER_DATA";
