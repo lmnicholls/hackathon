@@ -8,7 +8,10 @@ const WorkoutVideoReducer = function (state = DEFAULT_STATE, action) {
   switch (action.type) {
     case GET_VIDEO:
       return {
-        videoId: action.payload.data.items[0].id.videoId,
+        videoId:
+          action.payload.data.items[
+            Math.floor(Math.random() * action.payload.data.items.length)
+          ].id.videoId,
       };
     default:
       return state;

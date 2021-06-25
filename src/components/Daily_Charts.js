@@ -50,15 +50,21 @@ const DailyCharts = () => {
       datasets: [
         {
           label: "Today's Temperature (°F)",
-          data: [...hourlyWeather][0].temperature.slice(0, dailyDataPoints),
+          data: [...hourlyWeather][0].temperature
+            .slice(0, dailyDataPoints)
+            .map((data) => {
+              return Math.round(data);
+            }),
           fill: false,
-          backgroundColor: "rgb(92, 145, 173)",
-          borderColor: "rgba(92, 145, 173, 0.2)",
+          backgroundColor: "black",
+          borderColor: "black",
           pointBackgroundColor: tempPointColors,
         },
         {
           label: "Max Temperature(%)",
-          data: userMaxTemp,
+          data: userMaxTemp.map((data) => {
+            return Math.round(data);
+          }),
           fill: true,
           backgroundColor: "rgba(86, 156, 93, 0.25)",
           borderColor: "rgba(86, 156, 93, 0.2)",
@@ -76,6 +82,14 @@ const DailyCharts = () => {
           },
         ],
       },
+      legend: {
+        labels: {
+          filter: function (item, chart) {
+            // Logic to remove a particular legend item goes here
+            return !item.text.includes("Today's Temperature (°F)");
+          },
+        },
+      },
     };
 
     const humidityData = {
@@ -83,16 +97,21 @@ const DailyCharts = () => {
       datasets: [
         {
           label: "Today's Humidity (%)",
-          data: [...hourlyWeather][0].humidity.slice(0, dailyDataPoints),
+          data: [...hourlyWeather][0].humidity
+            .slice(0, dailyDataPoints)
+            .map((data) => {
+              return Math.round(data);
+            }),
           fill: false,
-          backgroundColor: "rgb(92, 145, 173)",
-          borderColor: "rgba(92, 145, 173, 0.2)",
+          backgroundColor: "black",
+          borderColor: "black",
           pointBackgroundColor: humidityPointColors,
         },
         {
           label: "Max Humidity (%)",
-          // hardcoded user data - need to fix!!
-          data: userMaxHumidity,
+          data: userMaxHumidity.map((data) => {
+            return Math.round(data);
+          }),
           fill: true,
           backgroundColor: "rgba(86, 156, 93, 0.25)",
           borderColor: "rgba(86, 156, 93, 0.2)",
