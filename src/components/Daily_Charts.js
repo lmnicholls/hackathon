@@ -11,6 +11,19 @@ const DailyCharts = () => {
   const userData = useSelector((state) => state.userData);
   const dataLoaded = useSelector((state) => state.hourlyWeather.dataLoaded);
 
+  /*
+  const { icons } = useSelector(
+    (state) => state.hourlyWeather.hourlyWeather[0]
+  );*/
+
+  const makeIconURL = (icon) => {
+    let iconURL;
+    if (dataLoaded) {
+      iconURL = `http://openweathermap.org/img/wn/${icon}.png`;
+    }
+    return iconURL;
+  };
+
   if (dataLoaded === false) {
     return <div></div>;
   } else {
@@ -20,10 +33,7 @@ const DailyCharts = () => {
       ).length + 1;
 
     const time = [...hourlyWeather[0].time].splice(0, dailyDataPoints);
-    const conditions = [...hourlyWeather[0].conditions].splice(
-      0,
-      dailyDataPoints
-    );
+    const conditions = [...hourlyWeather[0].icons].splice(0, dailyDataPoints);
     const userMaxTemp = Array(dailyDataPoints).fill(parseInt(userData.temp));
     const userMaxHumidity = Array(dailyDataPoints).fill(
       parseInt(userData.humidity)
@@ -134,45 +144,50 @@ const DailyCharts = () => {
     return (
       <div className="dailyConditions text-center">
         <br></br>
-        <h4 className="daily-conditions-chart">The Day's Conditions</h4>
-        <div className="graphs d-flex justify-content-center ">
-          <div className="temperatureGraph">
-            <h5>Temperature (°F)</h5>
-            <Line
-              data={tempData}
-              options={{
-                tempOptions,
-                responsive: true,
-                maintainAspectRatio: true,
-              }}
-            />
+        <div className="daily-conditions-temp-humidity">
+          <h4 className="daily-conditions-chart">The Day's Conditions</h4>
+          <div className="graphs d-flex justify-content-center ">
+            <div className="temperatureGraph">
+              <h5>Temperature (°F)</h5>
+              <Line
+                data={tempData}
+                options={{
+                  tempOptions,
+                  responsive: true,
+                  maintainAspectRatio: true,
+                }}
+              />
+            </div>
+            <div className="humidityGraph">
+              <h5>Humidity (%)</h5>
+              <Line
+                data={humidityData}
+                options={{
+                  humidityOptions,
+                  responsive: true,
+                  maintainAspectRatio: true,
+                }}
+              />
+            </div>
           </div>
-          <div className="humidityGraph">
-            <h5>Humidity (%)</h5>
-            <Line
-              data={humidityData}
-              options={{
-                humidityOptions,
-                responsive: true,
-                maintainAspectRatio: true,
-              }}
-            />
-          </div>
+          <br></br>
         </div>
-        <br></br>
+
         <div className="conditions d-flex justify-content-center">
           <div className="conditions-chart">
             <h4>Conditions</h4>
-            <table className="table table-striped table-responsive table-primary">
+            <table className="table table-striped table-responsive table-default">
               <tbody>
-                <tr>
+                <tr className="conditions-time">
                   {time.map((t) => (
                     <td>{t}</td>
                   ))}
                 </tr>
                 <tr>
                   {conditions.map((c) => (
-                    <td>{c}</td>
+                    <td>
+                      <img src={makeIconURL(c)} alt="icons"></img>
+                    </td>
                   ))}
                 </tr>
               </tbody>
