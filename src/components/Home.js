@@ -17,18 +17,25 @@ const Home = () => {
   //event handlers
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(showLoading());
-    dispatch(storeUserData(temp, humidityLevel));
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        const { latitude } = position.coords;
-        const { longitude } = position.coords;
-        dispatch(getLocation(latitude, longitude));
-        dispatch(hideLoading());
-      });
+    if (!temp || !humidityLevel) {
+      alert(
+        "All fields required. Please enter your temperature and humidity preferences."
+      );
     } else {
-      alert("Sorry, your location was not found.");
+      dispatch(showLoading());
+      dispatch(storeUserData(temp, humidityLevel));
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const { latitude } = position.coords;
+          const { longitude } = position.coords;
+          dispatch(getLocation(latitude, longitude));
+          dispatch(hideLoading());
+        });
+      } else {
+        alert("Sorry, your location was not found.");
+      }
     }
   };
 
