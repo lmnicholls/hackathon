@@ -36,8 +36,20 @@ const CurrentWeather = () => {
             {currentWeather[0].date} at {currentWeather[0].time}
           </h6>
           <div className="current-weather-details">
-            <h5>{Math.round(currentWeather[0].temperature)}F</h5>
-            <h5>{currentWeather[0].humidity}%</h5>
+            {tempConditionMet ? (
+              <h5 className="text-success">
+                {Math.round(currentWeather[0].temperature)}F
+              </h5>
+            ) : (
+              <h5 className="text-danger">
+                {Math.round(currentWeather[0].temperature)}F
+              </h5>
+            )}
+            {humidityConditionMet ? (
+              <h5 className="text-success">{currentWeather[0].humidity}%</h5>
+            ) : (
+              <h5 className="text-danger">{currentWeather[0].humidity}%</h5>
+            )}
 
             <div className="weather-icon">
               <img src={makeIconURL()} alt="icon"></img>
