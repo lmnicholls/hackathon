@@ -179,7 +179,6 @@ const DailyCharts = () => {
             </table>
           </div>
         </div>
-        <WorkoutVideo />
       </div>
     );
   }

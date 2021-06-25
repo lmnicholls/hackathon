@@ -31,6 +31,7 @@ const CurrentWeatherReducer = function (state = DEFAULT_STATE, action) {
             temperature: action.payload.data.current.temp,
             humidity: action.payload.data.current.humidity,
             conditions: action.payload.data.current.weather[0].main,
+            icon: action.payload.data.current.weather[0].icon,
           },
         ],
         dataLoaded: true,

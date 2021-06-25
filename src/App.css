@@ -59,16 +59,33 @@ input {
   color: white;
   background-color: #48484a;
   transition: all 0.3s ease;
+  margin-bottom: 4rem;
 }
 
 .update-preferences:hover {
   background-color: rgb(243, 148, 59);
 }
 
+.current-weather {
+  min-height: 50vh;
+  background-color: rgb(250, 235, 212);
+  padding-top: 5rem;
+}
+
 .results {
   margin-top: 3rem;
-  min-height: 15vh;
-  padding-top: 2rem 2rem 0rem 0rem;
+  min-height: 50vh;
+  padding-top: 8rem;
+}
+
+.current-weather-details {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+  margin-top: 2rem;
+  margin-left: 25%;
 }
 
 p {
@@ -100,6 +117,11 @@ p {
 
 .current-weather-title {
   padding-top: 2rem;
+}
+
+.dailyConditions {
+  min-height: 50vh;
+  background-color: rgb(250, 235, 212);
 }
 
 .daily-conditions-chart {
