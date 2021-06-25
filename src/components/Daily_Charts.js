@@ -71,7 +71,7 @@ const DailyCharts = () => {
           pointBackgroundColor: tempPointColors,
         },
         {
-          label: "Max Temperature(%)",
+          label: "Max Temperature(°F)",
           data: userMaxTemp.map((data) => {
             return Math.round(data);
           }),
@@ -91,14 +91,6 @@ const DailyCharts = () => {
             },
           },
         ],
-      },
-      legend: {
-        labels: {
-          filter: function (item, chart) {
-            // Logic to remove a particular legend item goes here
-            return !item.text.includes("Today's Temperature (°F)");
-          },
-        },
       },
     };
 

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { hideLoading, showLoading } from "react-redux-loading-bar";
 import { storeUserData, getLocation, updatePreferences } from "../actions";
 import CurrentWeather from "./Current_Weather";
 import DailyCharts from "./Daily_Charts";
+import Header from "./LoadingBar";
 
-const Form = () => {
+const Home = () => {
   const [temp, setTemp] = useState("");
   const [humidityLevel, setHumidityLevel] = useState("");
 
@@ -15,15 +17,15 @@ const Form = () => {
   //event handlers
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
+    dispatch(showLoading());
     dispatch(storeUserData(temp, humidityLevel));
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         const { latitude } = position.coords;
         const { longitude } = position.coords;
-
         dispatch(getLocation(latitude, longitude));
+        dispatch(hideLoading());
       });
     } else {
       alert("Sorry, your location was not found.");
@@ -37,6 +39,7 @@ const Form = () => {
 
   return (
     <div className="">
+      <Header />
       <h1 className="header">Should I Run Right Now?</h1>
       {!dataLoaded ? (
         <div>
@@ -55,11 +58,13 @@ const Form = () => {
                   </label>
                   <input
                     className="form-control"
-                    placeholder="Enter max run temp F"
+                    placeholder="Enter max run temp °F"
                     required
                     type="number"
                     value={temp}
                     onChange={(e) => setTemp(e.target.value)}
+                    oninvalid="this.setCustomValidity('This is a required field.')"
+                    oninput="this.setCustomValidity('')"
                   ></input>
                 </div>
 
@@ -116,4 +121,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default Home;

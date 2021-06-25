@@ -38,11 +38,11 @@ const CurrentWeather = () => {
           <div className="current-weather-details">
             {tempConditionMet ? (
               <h5 className="text-success">
-                {Math.round(currentWeather[0].temperature)}F
+                {Math.round(currentWeather[0].temperature)} °F
               </h5>
             ) : (
               <h5 className="text-danger">
-                {Math.round(currentWeather[0].temperature)}F
+                {Math.round(currentWeather[0].temperature)} °F
               </h5>
             )}
             {humidityConditionMet ? (
