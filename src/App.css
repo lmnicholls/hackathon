@@ -71,6 +71,16 @@ input {
   padding-top: 2rem 2rem 0rem 0rem;
 }
 
+.current-weather-details {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+  margin-top: 2rem;
+  margin-left: 25%;
+}
+
 p {
   font-size: 1.2rem;
 }

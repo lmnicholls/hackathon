@@ -15,11 +15,34 @@ const CurrentWeather = () => {
   const humidityConditionMet =
     currentWeather[0].humidity < parseInt(userData.humidity);
 
+  const { icon } = useSelector((state) => state.currentWeather.dailyWeather[0]);
+
+  const makeIconURL = () => {
+    let iconURL;
+    if (dataLoaded) {
+      iconURL = `http://openweathermap.org/img/wn/${icon}.png`;
+    }
+    return iconURL;
+  };
+
   const dataLoaded = useSelector((state) => state.hourlyWeather.dataLoaded);
 
   if (dataLoaded === true) {
     return (
       <div className="currentWeather text-center">
+        <h4 className="current-weather-title">Current Weather Conditions</h4>
+        <h6>
+          {currentWeather[0].date} at {currentWeather[0].time}
+        </h6>
+        <div className="current-weather-details">
+          <h4>{Math.round(currentWeather[0].temperature)}F</h4>
+          <h5>{currentWeather[0].humidity}%</h5>
+
+          <div className="weather-icon">
+            <img src={makeIconURL()} alt="icon"></img>
+          </div>
+        </div>
+
         {conditionsMet ? (
           <div className="results">
             <h3>
@@ -38,12 +61,17 @@ const CurrentWeather = () => {
             </p>
           </div>
         )}
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
+};
 
-        <h4 className="current-weather-title">Current Weather Conditions</h4>
-        <h6>
-          {currentWeather[0].date} at {currentWeather[0].time}
-        </h6>
-        <div class="table-div">
+export default CurrentWeather;
+
+/*
+<div class="table-div">
           <table className="table table-striped table-responsive table-secondary">
             <tbody>
               {tempConditionMet ? (
@@ -107,11 +135,4 @@ const CurrentWeather = () => {
             </tbody>
           </table>
         </div>
-      </div>
-    );
-  } else {
-    return <div></div>;
-  }
-};
-
-export default CurrentWeather;
+*/
