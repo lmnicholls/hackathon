@@ -73,7 +73,6 @@ input {
 }
 
 .results {
-  margin-top: 3rem;
   min-height: 50vh;
   padding-top: 8rem;
 }
@@ -119,7 +118,7 @@ p {
   padding-top: 2rem;
 }
 
-.dailyConditions {
+.daily-conditions-temp-humidity {
   min-height: 50vh;
   background-color: rgb(250, 235, 212);
 }
@@ -129,6 +128,9 @@ p {
 }
 
 .conditions-chart {
-  padding-top: 2rem;
-  margin-bottom: 3rem;
+  padding-top: 5rem;
+}
+
+.conditions {
+  min-height: 50vh;
 }

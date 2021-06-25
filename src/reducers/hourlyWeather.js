@@ -33,6 +33,9 @@ const HourlyWeatherReducer = function (state = DEFAULT_STATE, action) {
             conditions: action.payload.data.hourly.map((hour) => {
               return hour.weather[0].main;
             }),
+            icons: action.payload.data.hourly.map((hour) => {
+              return hour.weather[0].icon;
+            }),
           },
         ],
         dataLoaded: true,
