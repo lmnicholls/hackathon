@@ -132,3 +132,11 @@ p {
   padding-top: 2rem;
   margin-bottom: 3rem;
 }
+
+input:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
