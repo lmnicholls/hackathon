@@ -3,8 +3,8 @@ import axios from "axios";
 const ROOT_URL = "https://api.openweathermap.org/data/2.5/onecall?";
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
-const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=workout&type=video&videoEmbeddable=true&key=`;
-const YOUTUBE_API = process.env.YOUTUBE_API;
+const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=workout+class&type=video&videoEmbeddable=true&key=`;
+const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 
 export const GET_LOCATION = "GET_LOCATION";
 export const STORE_USER_DATA = "STORE_USER_DATA";
@@ -31,7 +31,7 @@ export function storeUserData(temp, humidity) {
 
 export function getWorkoutVideo() {
   const request = axios.get(
-    `${YOUTUBE_URL}AIzaSyB_Vtlyon357TNIgwqi6GL9H1uqO4pRjos`
+    `${YOUTUBE_URL}AIzaSyCOM9jNQ7zNmFDe7KPa3xoZ1KKCRrOp9oA`
   );
 
   return {
