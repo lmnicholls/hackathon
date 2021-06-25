@@ -25,8 +25,6 @@ const WorkoutVideo = () => {
     //   currentWeather[0].humidity < parseInt(userData.humidity);
 
     if (!conditionsMet) {
-      dispatch(getWorkoutVideo());
-
       return (
         <div class="video">
           <h4>Would you like to do a workout video instead?</h4>
