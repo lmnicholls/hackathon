@@ -30,16 +30,18 @@ const CurrentWeather = () => {
   if (dataLoaded === true) {
     return (
       <div className="currentWeather text-center">
-        <h4 className="current-weather-title">Current Weather Conditions</h4>
-        <h6>
-          {currentWeather[0].date} at {currentWeather[0].time}
-        </h6>
-        <div className="current-weather-details">
-          <h4>{Math.round(currentWeather[0].temperature)}F</h4>
-          <h5>{currentWeather[0].humidity}%</h5>
+        <div className="current-weather">
+          <h4 className="current-weather-title">Current Weather Conditions</h4>
+          <h6>
+            {currentWeather[0].date} at {currentWeather[0].time}
+          </h6>
+          <div className="current-weather-details">
+            <h5>{Math.round(currentWeather[0].temperature)}F</h5>
+            <h5>{currentWeather[0].humidity}%</h5>
 
-          <div className="weather-icon">
-            <img src={makeIconURL()} alt="icon"></img>
+            <div className="weather-icon">
+              <img src={makeIconURL()} alt="icon"></img>
+            </div>
           </div>
         </div>
 
