@@ -67,14 +67,14 @@ input {
 }
 
 .current-weather {
-  min-height: 50vh;
   background-color: rgb(250, 235, 212);
-  padding-top: 5rem;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .results {
-  min-height: 50vh;
-  padding-top: 8rem;
+  padding-top: 50px;
+  padding-bottom: 40px;
 }
 
 .current-weather-details {
@@ -114,25 +114,15 @@ p {
   margin: 0 auto !important;
 }
 
-.current-weather-title {
-  padding-top: 2rem;
-}
-
 .daily-conditions-temp-humidity {
-  min-height: 50vh;
   background-color: rgb(250, 235, 212);
-}
-
-.daily-conditions-chart {
-  padding-top: 2rem;
+  padding-bottom: 50px;
+  padding-top: 50px;
 }
 
 .conditions-chart {
-  padding-top: 5rem;
-}
-
-.conditions {
-  min-height: 50vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 input:invalid {

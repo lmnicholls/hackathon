@@ -31,7 +31,7 @@ const CurrentWeather = () => {
     return (
       <div className="currentWeather text-center">
         <div className="current-weather">
-          <h4 className="current-weather-title">Current Weather Conditions</h4>
+          <h2 className="current-weather-title">Current Weather Conditions</h2>
           <h6>
             {currentWeather[0].date} at {currentWeather[0].time}
           </h6>
@@ -83,70 +83,3 @@ const CurrentWeather = () => {
 };
 
 export default CurrentWeather;
-
-/*
-<div class="table-div">
-          <table className="table table-striped table-responsive table-secondary">
-            <tbody>
-              {tempConditionMet ? (
-                <tr className="table-success">
-                  <td>Temperature</td>
-                  <td> {currentWeather[0].temperature} °F</td>
-                  <td>
-                    {currentWeather[0].temperature < parseInt(userData.temp) ? (
-                      <div>Met</div>
-                    ) : (
-                      <div>Not Met</div>
-                    )}
-                  </td>
-                </tr>
-              ) : (
-                <tr className="table-danger">
-                  <td>Temperature</td>
-                  <td> {currentWeather[0].temperature} °F</td>
-                  <td>
-                    {currentWeather[0].temperature < parseInt(userData.temp) ? (
-                      <div>Met</div>
-                    ) : (
-                      <div>Not Met</div>
-                    )}
-                  </td>
-                </tr>
-              )}
-              {humidityConditionMet ? (
-                <tr className="table-success">
-                  <td>Humidity</td>
-                  <td> {currentWeather[0].humidity} %</td>
-                  <td>
-                    {currentWeather[0].humidity <
-                    parseInt(userData.humidity) ? (
-                      <div>Met</div>
-                    ) : (
-                      <div>Not Met</div>
-                    )}
-                  </td>
-                </tr>
-              ) : (
-                <tr className="table-danger">
-                  <td>Humidity</td>
-                  <td> {currentWeather[0].humidity} %</td>
-                  <td>
-                    {currentWeather[0].humidity <
-                    parseInt(userData.humidity) ? (
-                      <div>Met</div>
-                    ) : (
-                      <div>Not Met</div>
-                    )}
-                  </td>
-                </tr>
-              )}
-
-              <tr>
-                <td>Condition</td>
-                <td> {currentWeather[0].conditions}</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-*/

@@ -137,11 +137,12 @@ const DailyCharts = () => {
       <div className="dailyConditions text-center">
         <br></br>
         <div className="daily-conditions-temp-humidity">
-          <h4 className="daily-conditions-chart">The Day's Conditions</h4>
+          <h2 className="daily-conditions-chart">The Day's Conditions</h2>
           <div className="graphs d-flex justify-content-center ">
             <div className="temperatureGraph">
               <h5>Temperature (°F)</h5>
               <Line
+                // className="lineChart"
                 data={tempData}
                 options={{
                   tempOptions,
@@ -153,6 +154,7 @@ const DailyCharts = () => {
             <div className="humidityGraph">
               <h5>Humidity (%)</h5>
               <Line
+                // className="lineChart"
                 data={humidityData}
                 options={{
                   humidityOptions,
@@ -167,7 +169,7 @@ const DailyCharts = () => {
 
         <div className="conditions d-flex justify-content-center">
           <div className="conditions-chart">
-            <h4>Conditions</h4>
+            <h2>Conditions</h2>
             <table className="table table-striped table-responsive table-default">
               <tbody>
                 <tr className="conditions-time">
@@ -186,6 +188,7 @@ const DailyCharts = () => {
             </table>
           </div>
         </div>
+        <WorkoutVideo />
       </div>
     );
   }
