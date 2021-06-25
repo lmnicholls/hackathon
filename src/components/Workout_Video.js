@@ -20,10 +20,6 @@ const WorkoutVideo = () => {
   }, {});
 
   if (dataLoaded) {
-    // const idealTemp = currentWeather[0].temperature < parseInt(userData.temp);
-    // const idealHumidity =
-    //   currentWeather[0].humidity < parseInt(userData.humidity);
-
     if (!conditionsMet) {
       return (
         <div class="video">
